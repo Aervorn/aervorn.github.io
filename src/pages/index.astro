@@ -1,16 +1,50 @@
 ---
+import Base from '../layouts/Base.astro';
+import Hero from '../components/Hero.astro';
+import AppCard from '../components/AppCard.astro';
+import AiNote from '../components/AiNote.astro';
+import { apps } from '../data/apps';
 ---
+<Base
+  title="Aervorn · Small Mac apps, woven for myself"
+  description="Free, open-source Mac apps: Navloom keeps your browser bookmarks in shape, Flux is a simple, good-looking RSS reader."
+>
+  <Hero />
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<link rel="icon" href="/favicon.ico" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro</h1>
-	</body>
-</html>
+  <section class="section" id="apps">
+    <div class="wrap">
+      <div class="section-head">
+        <div>
+          <span class="eyebrow">The apps</span>
+          <h2>Two apps, one Mac.</h2>
+        </div>
+        <p>Both are signed but not notarized: macOS asks you to allow them once, in Privacy &amp; Security.</p>
+      </div>
+      <div class="apps">
+        {apps.map((app) => <AppCard app={app} />)}
+      </div>
+    </div>
+  </section>
+
+  <section class="note-section">
+    <div class="wrap"><AiNote /></div>
+  </section>
+
+  <section class="section" id="blog">
+    <div class="wrap">
+      <div class="section-head">
+        <div>
+          <span class="eyebrow">Blog</span>
+          <h2>Notes from the workbench.</h2>
+        </div>
+        <p>Home automation, macOS and the making of these apps. First posts coming soon.</p>
+      </div>
+    </div>
+  </section>
+</Base>
+
+<style>
+  .apps { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 22px; }
+  @media (max-width: 900px) { .apps { grid-template-columns: 1fr; } }
+  .note-section { padding-block: 8px 40px; }
+</style>

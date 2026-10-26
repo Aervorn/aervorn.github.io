@@ -1,0 +1,73 @@
+---
+import Threads from './Threads.astro';
+---
+<section class="hero">
+  <Threads />
+  <div class="wrap">
+    <span class="eyebrow">Independent Mac apps · open source</span>
+    <h1>Small Mac apps, <span class="weave">woven for myself.</span></h1>
+    <p class="lede">
+      I build the tools I couldn't find, then share them in case they help you too.
+      <strong>Native SwiftUI, free, MIT licensed</strong>, and everything stays on your Mac.
+    </p>
+    <div class="cta">
+      <a class="btn btn-primary" href="#apps">See the apps <span aria-hidden="true">→</span></a>
+      <a class="btn btn-ghost" href="https://github.com/Aervorn">GitHub</a>
+    </div>
+    <ul class="promises">
+      <li>No account</li><li>No tracking</li><li>No ads</li><li>English &amp; French</li>
+    </ul>
+  </div>
+</section>
+
+<style>
+  .hero {
+    position: relative;
+    isolation: isolate;
+    padding-block: 96px 72px;
+    overflow: hidden;
+  }
+  h1 {
+    font-family: var(--display);
+    font-weight: 800;
+    font-size: clamp(40px, 7vw, 84px);
+    line-height: 0.98;
+    letter-spacing: -0.045em;
+    margin: 22px 0 0;
+    max-width: 13ch;
+    text-wrap: balance;
+  }
+  .weave {
+    background: linear-gradient(100deg, var(--navloom) 0%, var(--navloom-2) 30%, var(--teal) 55%, var(--flux-2) 78%, var(--flux) 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+  .lede {
+    max-width: 56ch;
+    color: var(--muted);
+    font-size: clamp(16px, 1.6vw, 18.5px);
+    margin: 26px 0 0;
+  }
+  .lede strong { color: var(--fg); font-weight: 500; }
+  .cta { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 34px; }
+  .promises {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px 22px;
+    margin: 44px 0 0;
+    font-size: 13.5px;
+    color: var(--muted);
+  }
+  .promises li { display: inline-flex; align-items: center; gap: 8px; }
+  .promises li::before {
+    content: "";
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--teal);
+    box-shadow: 0 0 10px var(--teal);
+  }
+</style>

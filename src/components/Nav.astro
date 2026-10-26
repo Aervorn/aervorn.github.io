@@ -1,0 +1,54 @@
+---
+import Logo from './Logo.astro';
+---
+<header class="nav">
+  <div class="wrap">
+    <a class="brand" href="/" aria-label="Aervorn home">
+      <Logo />
+      Aervorn
+    </a>
+    <nav aria-label="Main">
+      <a href="/#apps">Apps</a>
+      <a href="/#blog">Blog</a>
+      <a href="https://github.com/Aervorn">GitHub</a>
+    </nav>
+  </div>
+</header>
+
+<style>
+  .nav {
+    position: sticky;
+    top: env(safe-area-inset-top, 0px);
+    z-index: 9;
+    background: rgba(10, 9, 19, 0.72);
+    backdrop-filter: blur(14px) saturate(140%);
+    -webkit-backdrop-filter: blur(14px) saturate(140%);
+    border-bottom: 1px solid var(--line);
+  }
+  .wrap {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    padding-block: 14px;
+  }
+  .brand {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    text-decoration: none;
+    font-family: var(--display);
+    font-weight: 700;
+    font-size: 20px;
+    letter-spacing: -0.02em;
+  }
+  nav { display: flex; align-items: center; gap: 6px; font-size: 14px; }
+  nav a {
+    text-decoration: none;
+    color: var(--muted);
+    padding: 7px 12px;
+    border-radius: 999px;
+    transition: color 0.2s, background 0.2s;
+  }
+  nav a:hover { color: var(--fg); background: rgba(255, 255, 255, 0.05); }
+</style>

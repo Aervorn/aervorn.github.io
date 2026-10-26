@@ -1,0 +1,133 @@
+/* Aervorn design tokens. Every color and font used on the site comes from here. */
+:root {
+  /* Surfaces */
+  --ink: #0a0913;      /* page background, near-black with an indigo tint */
+  --loom: #13121f;     /* raised surfaces */
+  --loom-2: #1c1b33;   /* indigo of the Navloom icon */
+  --line: rgba(196, 190, 255, 0.1);
+
+  /* Text */
+  --fg: #eeebfa;
+  --muted: #9c98b8;
+  --dim: #6b6788;
+
+  /* Accents */
+  --navloom: #a78bfa;
+  --navloom-2: #60a5fa;
+  --flux: #ff6a3d;
+  --flux-2: #ffb054;
+  --teal: #2dd4bf;
+
+  /* Type (the --font-* variables come from astro.config.mjs) */
+  --display: var(--font-display);
+  --body: var(--font-body);
+  --mono: var(--font-mono);
+
+  --radius: 22px;
+  --max: 1160px;
+
+  color-scheme: dark;
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  margin: 0;
+  background: var(--ink);
+  color: var(--fg);
+  font-family: var(--body);
+  font-size: 16px;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+img { max-width: 100%; height: auto; }
+a { color: inherit; }
+
+:focus-visible {
+  outline: 2px solid var(--navloom);
+  outline-offset: 3px;
+  border-radius: 8px;
+}
+
+/* Page width + side gutter, reused by every section */
+.wrap {
+  max-width: var(--max);
+  margin: 0 auto;
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+}
+
+/* Small uppercase label above titles */
+.eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-family: var(--mono);
+  font-size: 12.5px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+.eyebrow::before {
+  content: "";
+  width: 28px;
+  height: 1px;
+  background: linear-gradient(90deg, var(--navloom), var(--flux));
+}
+
+/* Buttons */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 15px;
+  padding: 13px 20px;
+  border-radius: 14px;
+  transition: transform 0.2s, box-shadow 0.2s, background 0.2s;
+}
+.btn-primary {
+  background: var(--fg);
+  color: var(--ink);
+  box-shadow: 0 10px 30px -10px rgba(167, 139, 250, 0.6);
+}
+.btn-primary:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 14px 36px -10px rgba(167, 139, 250, 0.8);
+}
+.btn-ghost {
+  border: 1px solid var(--line);
+  color: var(--fg);
+  background: rgba(255, 255, 255, 0.03);
+}
+.btn-ghost:hover { background: rgba(255, 255, 255, 0.07); }
+
+/* Section titles */
+.section { padding-block: 72px; }
+.section-head {
+  display: flex;
+  align-items: end;
+  justify-content: space-between;
+  gap: 20px;
+  flex-wrap: wrap;
+  margin-bottom: 34px;
+}
+.section-head h2 {
+  font-family: var(--display);
+  font-weight: 700;
+  font-size: clamp(28px, 3.6vw, 42px);
+  letter-spacing: -0.035em;
+  line-height: 1.05;
+  margin: 10px 0 0;
+}
+.section-head p { color: var(--muted); max-width: 46ch; margin: 0; }
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after { transition: none !important; animation: none !important; }
+}

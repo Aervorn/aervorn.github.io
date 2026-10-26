@@ -1,0 +1,146 @@
+---
+import { Image } from 'astro:assets';
+import type { App } from '../data/apps';
+
+interface Props { app: App }
+const { app } = Astro.props;
+const [a, b] = app.accent;
+---
+<article class="app" style={`--a:${a};--b:${b}`}>
+  <div class="top">
+    <img class="icon" src={app.icon} alt="" width="64" height="64" />
+    <div>
+      <h3>{app.name}</h3>
+      <div class="meta">
+        <span class="pill">v{app.version}</span>
+        <span class="pill free">Free</span>
+        <span class="pill">MIT</span>
+      </div>
+    </div>
+  </div>
+
+  <p class="tagline">{app.tagline}</p>
+  <p class="desc">{app.description}</p>
+
+  <div class="window">
+    <Image src={app.screenshot} alt={app.screenshotAlt} widths={[600, 900, 1200]} sizes="(max-width: 900px) 100vw, 560px" />
+  </div>
+
+  <ul class="chips">
+    {app.features.map((f) => <li style={`--c:${f.color}`}><i></i>{f.label}</li>)}
+  </ul>
+
+  <div class="actions">
+    <a class="btn btn-primary" href={`${app.repo}/releases/latest`}>Download</a>
+    <a class="btn btn-ghost" href={app.repo}>Learn more</a>
+    <span class="req">{app.requirements}</span>
+  </div>
+</article>
+
+<style>
+  .app {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 22px;
+    padding: 28px;
+    border-radius: 28px;
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.035), rgba(255, 255, 255, 0.01));
+    border: 1px solid var(--line);
+    overflow: hidden;
+    min-width: 0;
+  }
+  /* Colored edge fading from the top-left corner */
+  .app::before {
+    content: "";
+    position: absolute;
+    inset: -1px;
+    border-radius: inherit;
+    padding: 1px;
+    background: linear-gradient(140deg, color-mix(in srgb, var(--a) 70%, transparent), transparent 40%);
+    -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    pointer-events: none;
+  }
+  /* Soft glow in the bottom-right corner */
+  .app::after {
+    content: "";
+    position: absolute;
+    width: 420px;
+    height: 420px;
+    right: -140px;
+    bottom: -180px;
+    background: radial-gradient(circle, color-mix(in srgb, var(--a) 30%, transparent), transparent 65%);
+    pointer-events: none;
+  }
+  .app > * { position: relative; z-index: 1; }
+
+  .top { display: flex; align-items: center; gap: 16px; }
+  .icon {
+    width: 64px;
+    height: 64px;
+    flex: none;
+    filter: drop-shadow(0 8px 18px color-mix(in srgb, var(--a) 45%, transparent));
+  }
+  h3 {
+    font-family: var(--display);
+    font-weight: 700;
+    font-size: 30px;
+    letter-spacing: -0.03em;
+    margin: 0;
+    line-height: 1;
+  }
+  .meta { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 8px; font-family: var(--mono); font-size: 11.5px; }
+  .pill { padding: 3px 8px; border-radius: 999px; border: 1px solid var(--line); color: var(--muted); }
+  .pill.free {
+    color: var(--teal);
+    border-color: color-mix(in srgb, var(--teal) 35%, transparent);
+    background: color-mix(in srgb, var(--teal) 8%, transparent);
+  }
+  .tagline { font-size: 17px; margin: 0; max-width: 44ch; }
+  .desc { color: var(--muted); margin: -10px 0 0; font-size: 15px; max-width: 52ch; }
+
+  .window {
+    border-radius: 14px;
+    overflow: hidden;
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    background: #000;
+    box-shadow: 0 30px 60px -25px color-mix(in srgb, var(--a) 55%, transparent), 0 0 0 1px rgba(0, 0, 0, 0.4);
+    transform: perspective(1400px) rotateX(4deg);
+    transform-origin: 50% 100%;
+    transition: transform 0.5s cubic-bezier(0.2, 0.7, 0.2, 1);
+  }
+  .app:hover .window { transform: perspective(1400px) rotateX(0); }
+  .window :global(img) {
+    display: block;
+    width: 100%;
+    height: auto;
+    aspect-ratio: 16 / 8.6;
+    object-fit: cover;
+    object-position: top left;
+  }
+
+  .chips { list-style: none; padding: 0; margin: 0; display: flex; flex-wrap: wrap; gap: 8px; }
+  .chips li {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    font-size: 13px;
+    padding: 6px 11px;
+    border-radius: 10px;
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid var(--line);
+  }
+  .chips i { width: 8px; height: 8px; border-radius: 3px; background: var(--c); }
+
+  .actions { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; margin-top: auto; }
+  .actions .btn-primary {
+    background: linear-gradient(135deg, var(--a), var(--b));
+    color: #fff;
+    box-shadow: 0 10px 26px -12px var(--a);
+  }
+  .req { font-family: var(--mono); font-size: 12px; color: var(--dim); margin-left: 4px; }
+
+  @media (prefers-reduced-motion: reduce) { .window { transform: none; } }
+</style>
