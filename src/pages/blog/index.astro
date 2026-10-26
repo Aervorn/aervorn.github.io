@@ -1,0 +1,92 @@
+---
+import Base from '../../layouts/Base.astro';
+import PostList from '../../components/PostList.astro';
+import { getPosts } from '../../utils/posts';
+import { categories, type CategoryId } from '../../data/categories';
+
+const posts = await getPosts();
+const used = [...new Set(posts.map((p) => p.data.category))] as CategoryId[];
+---
+<Base title="Blog · Aervorn" description="Home automation, macOS and the making of my Mac apps.">
+  <section class="head">
+    <div class="wrap">
+      <span class="eyebrow">Blog</span>
+      <h1>Notes from the <em>workbench</em>.</h1>
+      <p>Home automation, macOS and the making of my apps. <a href="/rss.xml">Follow with RSS</a>.</p>
+    </div>
+  </section>
+
+  <section class="section posts">
+    <div class="wrap">
+      {posts.length === 0 ? (
+        <p class="empty">The first posts are on their way.</p>
+      ) : (
+        <>
+          {used.length > 1 && (
+            <div class="filters" role="group" aria-label="Filter by category">
+              <button aria-pressed="true" data-filter="all">All</button>
+              {used.map((c) => (
+                <button aria-pressed="false" data-filter={c} style={`--c:var(--cat-${c})`}>{categories[c].label}</button>
+              ))}
+            </div>
+          )}
+          <PostList posts={posts} />
+        </>
+      )}
+    </div>
+  </section>
+</Base>
+
+<style>
+  .head { padding-block: 72px 8px; }
+  h1 {
+    font-family: var(--serif);
+    font-weight: 400;
+    font-size: clamp(44px, 7vw, 84px);
+    line-height: 0.98;
+    letter-spacing: -0.03em;
+    margin: 18px 0 0;
+  }
+  h1 em {
+    font-style: italic;
+    background: linear-gradient(100deg, var(--navloom), var(--teal) 55%, var(--flux-2));
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    padding-right: 0.06em;
+  }
+  .head p { color: var(--muted); font-size: 17px; margin: 20px 0 0; }
+  .head a { color: var(--fg); text-underline-offset: 4px; }
+  .posts { padding-top: 40px; }
+  .empty { font-family: var(--serif); font-style: italic; font-size: 22px; color: var(--muted); }
+  .filters { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 26px; }
+  .filters button {
+    all: unset;
+    cursor: pointer;
+    font-size: 13.5px;
+    padding: 6px 13px;
+    border-radius: 999px;
+    border: 1px solid var(--line);
+    color: var(--muted);
+    transition: color 0.2s, background 0.2s, border-color 0.2s;
+  }
+  .filters button:hover { color: var(--fg); }
+  .filters button[aria-pressed='true'] {
+    color: var(--fg);
+    border-color: color-mix(in srgb, var(--c, var(--fg)) 50%, transparent);
+    background: color-mix(in srgb, var(--c, var(--fg)) 14%, transparent);
+  }
+  .filters button:focus-visible { outline: 2px solid var(--navloom); outline-offset: 2px; }
+</style>
+
+<script>
+  const buttons = document.querySelectorAll<HTMLButtonElement>('[data-filter]');
+  const items = document.querySelectorAll<HTMLLIElement>('li[data-category]');
+  buttons.forEach((btn) =>
+    btn.addEventListener('click', () => {
+      const f = btn.dataset.filter;
+      buttons.forEach((b) => b.setAttribute('aria-pressed', String(b === btn)));
+      items.forEach((li) => (li.hidden = f !== 'all' && li.dataset.category !== f));
+    }),
+  );
+</script>

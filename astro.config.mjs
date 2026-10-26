@@ -23,10 +23,23 @@ export default defineConfig({
     },
     {
       provider: fontProviders.google(),
+      name: 'Newsreader',
+      cssVariable: '--font-serif',
+      weights: [400, 500, 600],
+      styles: ['normal', 'italic'],
+      fallbacks: ['Iowan Old Style', 'Georgia', 'serif'],
+    },
+    {
+      provider: fontProviders.google(),
       name: 'Geist Mono',
       cssVariable: '--font-mono',
       weights: [400, 500],
       fallbacks: ['ui-monospace', 'monospace'],
     },
   ],
+
+  // Code blocks in blog posts
+  markdown: {
+    shikiConfig: { theme: 'rose-pine-moon' },
+  },
 });

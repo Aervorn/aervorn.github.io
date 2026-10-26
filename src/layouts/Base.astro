@@ -7,8 +7,9 @@ import '../styles/global.css';
 interface Props {
   title: string;
   description: string;
+  type?: 'website' | 'article';
 }
-const { title, description } = Astro.props;
+const { title, description, type = 'website' } = Astro.props;
 const canonical = new URL(Astro.url.pathname, Astro.site);
 ---
 <!doctype html>
@@ -24,11 +25,13 @@ const canonical = new URL(Astro.url.pathname, Astro.site);
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
     <meta property="og:url" content={canonical} />
-    <meta property="og:type" content="website" />
+    <meta property="og:type" content={type} />
     <meta name="generator" content={Astro.generator} />
     <Font cssVariable="--font-display" preload />
     <Font cssVariable="--font-body" preload />
     <Font cssVariable="--font-mono" />
+    <Font cssVariable="--font-serif" />
+    <link rel="alternate" type="application/rss+xml" title="Aervorn blog" href="/rss.xml" />
   </head>
   <body>
     <Nav />
