@@ -1,0 +1,239 @@
+---
+// A macOS-style window: a sidebar of sections and one pane per section.
+// Each section can be opened directly with a link like /navloom#twins.
+import { Image } from 'astro:assets';
+import Glyph from './Glyph.astro';
+import type { App } from '../data/types';
+
+interface Props { app: App }
+const { app } = Astro.props;
+const [a, b] = app.accent;
+---
+<div class="appwin" style={`--a:${a};--b:${b}`} data-appwin>
+  <div class="titlebar">
+    <span class="lights" aria-hidden="true"><i></i><i></i><i></i></span>
+    <span class="title">{app.name}</span>
+  </div>
+  <div class="body">
+    <div class="side" role="tablist" aria-label={`${app.name} features`} aria-orientation="vertical">
+      {app.sections.map((s, i) => (
+        <button
+          role="tab"
+          id={`tab-${s.id}`}
+          aria-controls={`pane-${s.id}`}
+          aria-selected={i === 0 ? 'true' : 'false'}
+          tabindex={i === 0 ? 0 : -1}
+          data-id={s.id}
+        >
+          <span class="glyph" style={`background:${s.color}`}><Glyph name={s.glyph} /></span>
+          {s.title}
+        </button>
+      ))}
+    </div>
+
+    <div class="panes">
+      {app.sections.map((s, i) => (
+        <section class="pane" role="tabpanel" id={`pane-${s.id}`} aria-labelledby={`tab-${s.id}`} hidden={i !== 0}>
+          <div class="pane-text">
+            <h3>{s.heading}</h3>
+            <p class="summary">{s.summary}</p>
+            <ul class="points">{s.points.map((p) => <li>{p}</li>)}</ul>
+            {s.limits && (
+              <div class="limits">
+                <span>Limitations</span>
+                <ul>{s.limits.map((l) => <li>{l}</li>)}</ul>
+              </div>
+            )}
+          </div>
+          {s.screenshot && (
+            <div class="shot" style={`max-width:min(100%, ${Math.round(s.screenshot.width / 2)}px)`}>
+              <Image
+                src={s.screenshot}
+                alt={s.screenshotAlt ?? ''}
+                widths={[600, 1000, 1400]}
+                sizes="(max-width: 860px) 100vw, 800px"
+                loading={i === 0 ? 'eager' : 'lazy'}
+              />
+            </div>
+          )}
+        </section>
+      ))}
+    </div>
+  </div>
+</div>
+
+<style>
+  .appwin {
+    scroll-margin-top: 84px; /* stay clear of the sticky menu when opened from a #link */
+    border-radius: 16px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    background: rgba(19, 18, 31, 0.85);
+    backdrop-filter: blur(24px) saturate(150%);
+    -webkit-backdrop-filter: blur(24px) saturate(150%);
+    box-shadow:
+      0 50px 100px -40px color-mix(in srgb, var(--a) 45%, transparent),
+      0 0 0 1px rgba(0, 0, 0, 0.5);
+    overflow: hidden;
+  }
+  .titlebar {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 42px;
+    border-bottom: 1px solid var(--line);
+    background: rgba(255, 255, 255, 0.025);
+  }
+  .lights { position: absolute; left: 16px; display: flex; gap: 8px; }
+  .lights i { width: 12px; height: 12px; border-radius: 50%; background: #ff5f57; }
+  .lights i:nth-child(2) { background: #febc2e; }
+  .lights i:nth-child(3) { background: #28c840; }
+  .title { font-size: 13px; font-weight: 600; color: var(--muted); }
+
+  .body { display: grid; grid-template-columns: 210px minmax(0, 1fr); min-height: 560px; }
+
+  .side {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    padding: 12px 10px;
+    border-right: 1px solid var(--line);
+    background: rgba(255, 255, 255, 0.02);
+  }
+  .side button {
+    all: unset;
+    box-sizing: border-box;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 7px 9px;
+    border-radius: 8px;
+    font-size: 14px;
+    color: var(--fg);
+    white-space: nowrap;
+    transition: background 0.15s;
+  }
+  .side button:hover { background: rgba(255, 255, 255, 0.05); }
+  .side button[aria-selected='true'] {
+    background: color-mix(in srgb, var(--a) 28%, transparent);
+    box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--a) 45%, transparent);
+  }
+  .side button:focus-visible { outline: 2px solid var(--a); outline-offset: 1px; }
+  .glyph {
+    width: 22px;
+    height: 22px;
+    flex: none;
+    border-radius: 6px;
+    display: grid;
+    place-items: center;
+    color: #fff;
+  }
+
+  .pane { padding: 30px 32px 34px; display: grid; gap: 26px; align-content: start; }
+  .pane[hidden] { display: none; }
+  .pane-text { max-width: 70ch; }
+  h3 {
+    font-family: var(--display);
+    font-weight: 700;
+    font-size: clamp(24px, 2.6vw, 32px);
+    letter-spacing: -0.03em;
+    line-height: 1.1;
+    margin: 0;
+    text-wrap: balance;
+  }
+  .summary { color: var(--muted); font-size: 16px; margin: 12px 0 0; }
+  .points { margin: 16px 0 0; padding: 0; list-style: none; display: grid; gap: 8px; font-size: 15px; }
+  .points li { display: flex; gap: 10px; }
+  .points li::before {
+    content: "";
+    flex: none;
+    width: 6px;
+    height: 6px;
+    margin-top: 0.6em;
+    border-radius: 2px;
+    background: linear-gradient(135deg, var(--a), var(--b));
+  }
+  .limits {
+    margin-top: 18px;
+    padding: 12px 16px;
+    border-radius: 12px;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid var(--line);
+    font-size: 14px;
+    color: var(--muted);
+  }
+  .limits span {
+    font-family: var(--mono);
+    font-size: 11.5px;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--dim);
+  }
+  .limits ul { margin: 6px 0 0; padding-left: 18px; display: grid; gap: 4px; }
+
+  .shot {
+    border-radius: 12px;
+    overflow: hidden;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 24px 50px -28px rgba(0, 0, 0, 0.8);
+    justify-self: start;
+  }
+  .shot :global(img) { display: block; width: 100%; height: auto; }
+
+  /* Phones and small tablets: the sidebar becomes a scrollable row */
+  @media (max-width: 860px) {
+    .body { grid-template-columns: 1fr; min-height: 0; }
+    .side {
+      flex-direction: row;
+      overflow-x: auto;
+      border-right: 0;
+      border-bottom: 1px solid var(--line);
+      scrollbar-width: none;
+    }
+    .side::-webkit-scrollbar { display: none; }
+    .pane { padding: 22px 18px 26px; }
+  }
+</style>
+
+<script>
+  // Tab switching, keyboard navigation and #hash links.
+  document.querySelectorAll<HTMLElement>('[data-appwin]').forEach((win) => {
+    const tabs = Array.from(win.querySelectorAll<HTMLButtonElement>('[role="tab"]'));
+
+    function select(tab: HTMLButtonElement, focus = false, updateHash = true) {
+      tabs.forEach((t) => {
+        const on = t === tab;
+        t.setAttribute('aria-selected', String(on));
+        t.tabIndex = on ? 0 : -1;
+        const pane = document.getElementById(t.getAttribute('aria-controls')!);
+        if (pane) pane.hidden = !on;
+      });
+      if (focus) tab.focus();
+      tab.scrollIntoView({ block: 'nearest', inline: 'nearest' });
+      if (updateHash) history.replaceState(null, '', `#${tab.dataset.id}`);
+    }
+
+    tabs.forEach((tab, i) => {
+      tab.addEventListener('click', () => select(tab));
+      tab.addEventListener('keydown', (e) => {
+        const next = { ArrowDown: 1, ArrowRight: 1, ArrowUp: -1, ArrowLeft: -1 }[e.key];
+        if (next) {
+          e.preventDefault();
+          select(tabs[(i + next + tabs.length) % tabs.length], true);
+        }
+      });
+    });
+
+    function fromHash() {
+      const id = location.hash.slice(1);
+      const tab = tabs.find((t) => t.dataset.id === id);
+      if (tab) {
+        select(tab, false, false);
+        win.scrollIntoView({ block: 'start' });
+      }
+    }
+    fromHash();
+    addEventListener('hashchange', fromHash);
+  });
+</script>

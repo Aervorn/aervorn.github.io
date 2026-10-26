@@ -1,6 +1,6 @@
 ---
 import { Image } from 'astro:assets';
-import type { App } from '../data/apps';
+import type { App } from '../data/types';
 
 interface Props { app: App }
 const { app } = Astro.props;
@@ -32,7 +32,7 @@ const [a, b] = app.accent;
 
   <div class="actions">
     <a class="btn btn-primary" href={`${app.repo}/releases/latest`}>Download</a>
-    <a class="btn btn-ghost" href={app.repo}>Learn more</a>
+    <a class="btn btn-ghost" href={`/${app.slug}`}>Learn more</a>
     <span class="req">{app.requirements}</span>
   </div>
 </article>

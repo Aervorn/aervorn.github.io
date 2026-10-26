@@ -1,0 +1,28 @@
+---
+// Small white line icons for the app window sidebar (16×16 grid).
+import type { GlyphName } from '../data/types';
+interface Props { name: GlyphName; size?: number }
+const { name, size = 14 } = Astro.props;
+
+const paths: Record<GlyphName, string> = {
+  home: 'M2.5 7.5 8 3l5.5 4.5M4 6.5V13h3v-3h2v3h3V6.5',
+  star: 'M8 2.5l1.7 3.5 3.8.5-2.8 2.6.7 3.8L8 11.1 4.6 12.9l.7-3.8-2.8-2.6 3.8-.5z',
+  twins: 'M3 5h6v8H3zM7 3h6v8',
+  ghost: 'M4 13V7a4 4 0 0 1 8 0v6l-1.5-1.2L9 13l-1-1.2L7 13l-1.5-1.2zM6.5 7.5h0M9.5 7.5h0',
+  echo: 'M5 8a3 3 0 0 1 6 0M3 8a5 5 0 0 1 10 0M8 8v5',
+  ferry: 'M2.5 10.5h11l-1.5 3h-8zM4.5 10.5V7h7v3.5M7 7V4.5h2V7',
+  archive: 'M2.5 3.5h11v3h-11zM3.5 6.5v6h9v-6M6.5 9h3',
+  feed: 'M3.5 12.5h0M3.5 8a4.5 4.5 0 0 1 4.5 4.5M3.5 3.5a9 9 0 0 1 9 9',
+  list: 'M3 4h2v2H3zM7 5h6M3 10h2v2H3zM7 11h6',
+  article: 'M4 2.5h8v11H4zM6 5.5h4M6 8h4M6 10.5h2.5',
+  magnet: 'M4 3v5a4 4 0 0 0 8 0V3M4 5.5h2.5M9.5 5.5H12M6.5 3v5a1.5 1.5 0 0 0 3 0V3',
+  filter: 'M2.5 3.5h11L9.5 8.5v4l-3 1v-5z',
+  chart: 'M3 13V9M6.5 13V5M10 13V7.5M13.5 13V3.5',
+  offline: 'M8 3v7M5 7.5 8 10.5l3-3M3.5 13h9',
+  sync: 'M12.5 6.5A4.5 4.5 0 0 0 4 5.5M3.5 9.5A4.5 4.5 0 0 0 12 10.5M4 3v2.5h2.5M12 13v-2.5H9.5',
+  keyboard: 'M2 4.5h12v7H2zM4.5 7h0M7 7h0M9.5 7h0M12 7h0M5 9.5h6',
+};
+---
+<svg width={size} height={size} viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+  <path d={paths[name]} />
+</svg>
