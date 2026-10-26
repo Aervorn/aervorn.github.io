@@ -1,12 +1,15 @@
 ---
 import type { App } from '../data/types';
-interface Props { compat: NonNullable<App['compatibility']> }
-const { compat } = Astro.props;
+import type { Lang } from '../i18n/config';
+import { useT } from '../i18n/ui';
+interface Props { compat: NonNullable<App['compatibility']>; lang: Lang }
+const { compat, lang } = Astro.props;
+const t = useT(lang);
 ---
 <div class="scroll">
   <table>
     <thead>
-      <tr><th scope="col">Browser</th>{compat.columns.map((c) => <th scope="col">{c}</th>)}</tr>
+      <tr><th scope="col">{t('compat.browser')}</th>{compat.columns.map((c) => <th scope="col">{c}</th>)}</tr>
     </thead>
     <tbody>
       {compat.rows.map((r) => (
@@ -14,10 +17,11 @@ const { compat } = Astro.props;
           <th scope="row">{r.label}</th>
           {r.cells.map((c) => {
             const yes = c.startsWith('yes');
+            const mark = c.slice(yes ? 3 : 2);
             return (
               <td>
-                <span class={yes ? 'yes' : 'no'} aria-label={yes ? 'Supported' : 'Not supported'}>{yes ? '✓' : '—'}</span>
-                {c.slice(yes ? 3 : 2) && <sup>{c.slice(yes ? 3 : 2)}</sup>}
+                <span class={yes ? 'yes' : 'no'} aria-label={yes ? t('compat.yes') : t('compat.no')}>{yes ? '✓' : '—'}</span>
+                {mark && <sup>{mark}</sup>}
               </td>
             );
           })}
@@ -26,7 +30,7 @@ const { compat } = Astro.props;
     </tbody>
   </table>
 </div>
-{compat.notes && <ul class="notes">{compat.notes.map((n) => <li>{n}</li>)}</ul>}
+{compat.notes && <ul class="notes">{compat.notes[lang].map((n) => <li>{n}</li>)}</ul>}
 
 <style>
   .scroll { overflow-x: auto; border: 1px solid var(--line); border-radius: var(--radius); background: var(--loom); }

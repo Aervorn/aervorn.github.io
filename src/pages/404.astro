@@ -1,0 +1,39 @@
+---
+// Page shown by GitHub Pages for any unknown address, in both languages
+import Base from '../layouts/Base.astro';
+import Threads from '../components/Threads.astro';
+import { useT } from '../i18n/ui';
+const en = useT('en');
+const fr = useT('fr');
+---
+<Base lang="en" title="404 · Aervorn" description={en('notfound.text')} alternates={{ fr: '/fr/' }}>
+  <section class="nf">
+    <Threads />
+    <div class="wrap">
+      <p class="code">404</p>
+      <h1>{en('notfound.title')}</h1>
+      <p>{en('notfound.text')} <a href="/">{en('notfound.home')}</a></p>
+      <p lang="fr" class="fr">{fr('notfound.text')} <a href="/fr/">{fr('notfound.home')}</a></p>
+    </div>
+  </section>
+</Base>
+
+<style>
+  .nf { position: relative; isolation: isolate; overflow: hidden; padding-block: 120px 140px; }
+  .code {
+    font-family: var(--display);
+    font-weight: 800;
+    font-size: clamp(90px, 18vw, 200px);
+    line-height: 0.9;
+    letter-spacing: -0.06em;
+    margin: 0;
+    background: linear-gradient(100deg, var(--navloom), var(--teal) 55%, var(--flux));
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+  h1 { font-family: var(--display); font-size: clamp(28px, 4vw, 40px); letter-spacing: -0.03em; margin: 16px 0 0; }
+  p { color: var(--muted); font-size: 17px; margin: 14px 0 0; }
+  .fr { color: var(--dim); }
+  a { color: var(--fg); text-underline-offset: 4px; }
+</style>

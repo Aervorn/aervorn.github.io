@@ -4,6 +4,13 @@ import { defineConfig, fontProviders } from 'astro/config';
 export default defineConfig({
   site: 'https://aervorn.github.io',
 
+  // English at /, French at /fr/
+  i18n: {
+    locales: ['en', 'fr'],
+    defaultLocale: 'en',
+    routing: { prefixDefaultLocale: false },
+  },
+
   // Fonts are downloaded at build time and served from the site itself:
   // visitors never contact Google.
   fonts: [

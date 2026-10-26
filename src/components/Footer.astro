@@ -1,12 +1,19 @@
 ---
+import { type Lang, localePath } from '../i18n/config';
+import { useT } from '../i18n/ui';
+interface Props { lang: Lang }
+const { lang } = Astro.props;
+const t = useT(lang);
 const year = new Date().getFullYear();
 ---
 <footer>
   <div class="wrap">
-    <span>© {year} Aervorn · Made in France</span>
+    <span>© {year} Aervorn · {t('footer.made')}</span>
     <nav aria-label="Footer">
-      <a href="/blog">Blog</a>
-      <a href="/rss.xml">RSS</a>
+      <a href={localePath(lang, '/blog')}>{t('nav.blog')}</a>
+      <a href={lang === 'fr' ? '/fr/rss.xml' : '/rss.xml'}>RSS</a>
+      <a href={localePath(lang, '/privacy')}>{t('footer.privacy')}</a>
+      <a href={localePath(lang, '/terms')}>{t('footer.terms')}</a>
       <a href="https://github.com/Aervorn">GitHub</a>
     </nav>
   </div>
@@ -14,16 +21,8 @@ const year = new Date().getFullYear();
 
 <style>
   footer { border-top: 1px solid var(--line); margin-top: 40px; }
-  .wrap {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    gap: 20px;
-    padding-block: 34px;
-    color: var(--dim);
-    font-size: 14px;
-  }
-  nav { display: flex; flex-wrap: wrap; gap: 18px; }
+  .wrap { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 20px; padding-block: 34px; color: var(--dim); font-size: 14px; }
+  nav { display: flex; flex-wrap: wrap; gap: 8px 18px; }
   a { text-decoration: none; }
   a:hover { color: var(--fg); }
 </style>

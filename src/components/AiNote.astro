@@ -1,11 +1,14 @@
+---
+import type { Lang } from '../i18n/config';
+import { useT } from '../i18n/ui';
+interface Props { lang: Lang }
+const t = useT(Astro.props.lang);
+---
 <div class="note">
   <div class="mark" aria-hidden="true">AI</div>
   <div>
-    <h3>Built with Claude</h3>
-    <p>
-      I come up with the ideas, make the design decisions and test every version on my own Mac.
-      Much of the code is written with Claude, Anthropic's AI assistant. I'd rather say so upfront.
-    </p>
+    <h3>{t('ai.title')}</h3>
+    <p>{t('ai.text')}</p>
   </div>
 </div>
 
@@ -20,17 +23,7 @@
     background: var(--loom);
     border: 1px solid var(--line);
   }
-  .mark {
-    width: 44px;
-    height: 44px;
-    border-radius: 12px;
-    display: grid;
-    place-items: center;
-    background: var(--loom-2);
-    font-family: var(--mono);
-    font-size: 13px;
-    color: var(--navloom);
-  }
+  .mark { width: 44px; height: 44px; border-radius: 12px; display: grid; place-items: center; background: var(--loom-2); font-family: var(--mono); font-size: 13px; color: var(--navloom); }
   h3 { margin: 0; font-family: var(--display); font-size: 20px; letter-spacing: -0.02em; }
   p { margin: 6px 0 0; color: var(--muted); max-width: 72ch; }
   @media (max-width: 520px) { .note { grid-template-columns: 1fr; } }

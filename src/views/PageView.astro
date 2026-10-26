@@ -1,0 +1,31 @@
+---
+// A plain text page written in Markdown (privacy, terms…)
+import { getEntry, render } from 'astro:content';
+import Base from '../layouts/Base.astro';
+import { type Lang, formatDate } from '../i18n/config';
+import '../styles/prose.css';
+
+interface Props { lang: Lang; slug: string }
+const { lang, slug } = Astro.props;
+const page = await getEntry('pages', `${lang}/${slug}`);
+if (!page) throw new Error(`Missing page src/content/pages/${lang}/${slug}.md`);
+const { Content } = await render(page);
+const updatedLabel = lang === 'fr' ? 'Mis à jour le' : 'Last updated';
+---
+<Base lang={lang} title={`${page.data.title} · Aervorn`} description={page.data.description}>
+  <header class="wrap head">
+    <span class="eyebrow">Aervorn</span>
+    <h1>{page.data.title}</h1>
+    <p class="updated">{updatedLabel} {formatDate(page.data.updated, lang)}</p>
+  </header>
+  <div class="wrap body">
+    <div class="prose"><Content /></div>
+  </div>
+</Base>
+
+<style>
+  .head { max-width: calc(760px + 32px); padding-block: 64px 32px; }
+  h1 { font-family: var(--serif); font-weight: 500; font-size: clamp(40px, 6vw, 64px); line-height: 1.04; letter-spacing: -0.025em; margin: 18px 0 0; }
+  .updated { font-family: var(--mono); font-size: 12.5px; color: var(--dim); margin: 16px 0 0; }
+  .body { padding-bottom: 40px; }
+</style>

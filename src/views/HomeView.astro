@@ -1,0 +1,80 @@
+---
+import Base from '../layouts/Base.astro';
+import Hero from '../components/Hero.astro';
+import AppCard from '../components/AppCard.astro';
+import AiNote from '../components/AiNote.astro';
+import PostList from '../components/PostList.astro';
+import { macApps, serverApps } from '../data/apps';
+import { getListedPosts } from '../utils/posts';
+import { type Lang, localePath } from '../i18n/config';
+import { useT } from '../i18n/ui';
+
+interface Props { lang: Lang }
+const { lang } = Astro.props;
+const t = useT(lang);
+const latest = (await getListedPosts(lang)).slice(0, 3);
+---
+<Base lang={lang} title={t('home.title')} description={t('home.description')}>
+  <Hero lang={lang} />
+
+  <section class="section" id="apps">
+    <div class="wrap">
+      <div class="section-head">
+        <div>
+          <span class="eyebrow">{t('apps.eyebrow')}</span>
+          <h2>{t('apps.title')}</h2>
+        </div>
+        <p>{t('apps.note')}</p>
+      </div>
+      <div class="apps">
+        {macApps.map((app) => <AppCard app={app} lang={lang} />)}
+      </div>
+    </div>
+  </section>
+
+  {serverApps.length > 0 && (
+    <section class="section server" id="self-hosted">
+      <div class="wrap">
+        <div class="section-head">
+          <div>
+            <span class="eyebrow">{t('server.eyebrow')}</span>
+            <h2>{t('server.title')}</h2>
+          </div>
+          <p>{t('server.note')}</p>
+        </div>
+        <div class="stack">
+          {serverApps.map((app) => <AppCard app={app} lang={lang} wide />)}
+        </div>
+      </div>
+    </section>
+  )}
+
+  <section class="note-section">
+    <div class="wrap"><AiNote lang={lang} /></div>
+  </section>
+
+  <section class="section" id="blog">
+    <div class="wrap">
+      <div class="section-head">
+        <div>
+          <span class="eyebrow">{t('blog.eyebrow')}</span>
+          <h2>{t('blog.title')}</h2>
+        </div>
+        <p>
+          {t('blog.intro')}{' '}
+          {latest.length > 0 ? <a href={localePath(lang, '/blog')}>{t('blog.all')}</a> : t('blog.soon')}
+        </p>
+      </div>
+      {latest.length > 0 && <PostList posts={latest} lang={lang} />}
+    </div>
+  </section>
+</Base>
+
+<style>
+  .apps { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 22px; }
+  @media (max-width: 900px) { .apps { grid-template-columns: 1fr; } }
+  .server { padding-top: 8px; }
+  .stack { display: grid; gap: 22px; }
+  .note-section { padding-block: 8px 40px; }
+  .section-head a { color: var(--fg); text-underline-offset: 4px; }
+</style>

@@ -1,0 +1,12 @@
+---
+// One page per app, generated from src/data/apps.ts
+import AppView from '../../views/AppView.astro';
+import { apps } from '../../data/apps';
+import type { App } from '../../data/types';
+
+export function getStaticPaths() {
+  return apps.map((app) => ({ params: { slug: app.slug }, props: { app } }));
+}
+interface Props { app: App }
+---
+<AppView app={Astro.props.app} lang="fr" />

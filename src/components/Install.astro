@@ -1,18 +1,40 @@
 ---
 import type { App } from '../data/types';
-interface Props { app: App }
-const { app } = Astro.props;
+import type { Lang } from '../i18n/config';
+import { useT } from '../i18n/ui';
+interface Props { app: App; lang: Lang }
+const { app, lang } = Astro.props;
+const t = useT(lang);
+const vars = { app: app.name };
+const isMac = app.platform === 'mac';
+const repoDir = app.repo.split('/').pop();
 ---
 <div class="install" style={`--a:${app.accent[0]}`}>
-  <ol class="steps">
-    <li><b>Download</b> <code>{app.name}-{app.version}.dmg</code> from the <a href={`${app.repo}/releases/latest`}>latest release</a>.</li>
-    <li><b>Open it</b> and drag {app.name} onto the Applications folder.</li>
-    <li><b>Allow it once.</b> {app.name} is signed but not notarized by Apple, so macOS blocks the first launch. Open <em>System Settings › Privacy &amp; Security</em> and click <em>Open Anyway</em>.</li>
-  </ol>
-  <div class="terminal">
-    <span>Or in Terminal</span>
-    <code>xattr -dr com.apple.quarantine /Applications/{app.name}.app</code>
-  </div>
+  {isMac ? (
+    <>
+      <ol class="steps">
+        <li><b>{t('install.s1a')}</b> <code>{app.name}-{app.version}.dmg</code> {t('install.s1b')} <a href={`${app.repo}/releases/latest`}>{t('install.s1c')}</a>.</li>
+        <li><b>{t('install.s2a')}</b> {t('install.s2b', vars)}</li>
+        <li><b>{t('install.s3a')}</b> {t('install.s3b', vars)} <em>{t('install.s3c')}</em> {t('install.s3d')} <em>{t('install.s3e')}</em>.</li>
+      </ol>
+      <div class="terminal">
+        <span>{t('install.terminal')}</span>
+        <code>xattr -dr com.apple.quarantine /Applications/{app.name}.app</code>
+      </div>
+    </>
+  ) : (
+    <>
+      <ol class="steps">
+        <li><b>{t('install.server.s1a')}</b> {t('install.server.s1b')}</li>
+        <li><b>{t('install.server.s2a')}</b> {t('install.server.s2b')}</li>
+        <li><b>{t('install.server.s3a')}</b> {t('install.server.s3b')}</li>
+      </ol>
+      <div class="terminal block">
+        <code>git clone {app.repo}.git<br />cd {repoDir}<br />docker compose -f {app.slug}.yaml up -d</code>
+        <a href={`${app.repo}#readme`}>{t('install.server.more')} →</a>
+      </div>
+    </>
+  )}
 </div>
 
 <style>
@@ -60,4 +82,7 @@ const { app } = Astro.props;
   }
   .terminal span { font-family: var(--mono); font-size: 11.5px; text-transform: uppercase; letter-spacing: 0.06em; color: var(--dim); }
   .terminal code { white-space: nowrap; }
+  .terminal.block { justify-content: space-between; align-items: center; }
+  .terminal.block code { line-height: 1.8; }
+  .terminal a { color: var(--fg); text-underline-offset: 4px; font-size: 14px; }
 </style>

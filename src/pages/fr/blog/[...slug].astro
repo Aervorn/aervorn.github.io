@@ -1,0 +1,15 @@
+---
+import PostView from '../../../views/PostView.astro';
+import { getPosts, postSlug, type Post } from '../../../utils/posts';
+
+export async function getStaticPaths() {
+  const posts = await getPosts('fr');
+  return posts.map((post, i) => ({
+    params: { slug: postSlug(post) },
+    props: { post, newer: posts[i - 1], older: posts[i + 1] },
+  }));
+}
+interface Props { post: Post; newer?: Post; older?: Post }
+const { post, newer, older } = Astro.props;
+---
+<PostView post={post} lang="fr" newer={newer} older={older} />

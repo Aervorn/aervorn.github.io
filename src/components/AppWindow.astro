@@ -4,9 +4,12 @@
 import { Image } from 'astro:assets';
 import Glyph from './Glyph.astro';
 import type { App } from '../data/types';
+import type { Lang } from '../i18n/config';
+import { useT } from '../i18n/ui';
 
-interface Props { app: App }
-const { app } = Astro.props;
+interface Props { app: App; lang: Lang }
+const { app, lang } = Astro.props;
+const t = useT(lang);
 const [a, b] = app.accent;
 ---
 <div class="appwin" style={`--a:${a};--b:${b}`} data-appwin>
@@ -15,7 +18,7 @@ const [a, b] = app.accent;
     <span class="title">{app.name}</span>
   </div>
   <div class="body">
-    <div class="side" role="tablist" aria-label={`${app.name} features`} aria-orientation="vertical">
+    <div class="side" role="tablist" aria-label={`${app.name} ${t('app.features')}`} aria-orientation="vertical">
       {app.sections.map((s, i) => (
         <button
           role="tab"
@@ -26,7 +29,7 @@ const [a, b] = app.accent;
           data-id={s.id}
         >
           <span class="glyph" style={`background:${s.color}`}><Glyph name={s.glyph} /></span>
-          {s.title}
+          {s.title[lang]}
         </button>
       ))}
     </div>
@@ -35,21 +38,21 @@ const [a, b] = app.accent;
       {app.sections.map((s, i) => (
         <section class="pane" role="tabpanel" id={`pane-${s.id}`} aria-labelledby={`tab-${s.id}`} hidden={i !== 0}>
           <div class="pane-text">
-            <h3>{s.heading}</h3>
-            <p class="summary">{s.summary}</p>
-            <ul class="points">{s.points.map((p) => <li>{p}</li>)}</ul>
+            <h3>{s.heading[lang]}</h3>
+            <p class="summary">{s.summary[lang]}</p>
+            <ul class="points">{s.points[lang].map((p) => <li>{p}</li>)}</ul>
             {s.limits && (
               <div class="limits">
-                <span>Limitations</span>
-                <ul>{s.limits.map((l) => <li>{l}</li>)}</ul>
+                <span>{t('app.limits')}</span>
+                <ul>{s.limits[lang].map((l) => <li>{l}</li>)}</ul>
               </div>
             )}
           </div>
           {s.screenshot && (
-            <div class="shot" style={`max-width:min(100%, ${Math.round(s.screenshot.width / 2)}px)`}>
+            <div class="shot" style={`max-width:min(100%, ${Math.round(s.screenshot[lang].width / 2)}px)`}>
               <Image
-                src={s.screenshot}
-                alt={s.screenshotAlt ?? ''}
+                src={s.screenshot[lang]}
+                alt={s.screenshotAlt?.[lang] ?? ''}
                 widths={[600, 1000, 1400]}
                 sizes="(max-width: 860px) 100vw, 800px"
                 loading={i === 0 ? 'eager' : 'lazy'}
