@@ -75,8 +75,8 @@ export const forkwatch: App = {
       glyph: 'filter',
       color: '#ef4444',
       summary: {
-        en: 'Before applying a change, ForkWatch analyses it. On the main branch, the one Home Assistant installs, it blocks anything that looks wrong and keeps the upstream version aside.',
-        fr: 'Avant d’appliquer un changement, ForkWatch l’analyse. Sur la branche principale, celle qu’installe Home Assistant, il bloque tout ce qui semble anormal et met la version distante de côté.',
+        en: 'Before applying a change, ForkWatch analyses it. On the main branch, the one people actually use, it blocks anything that looks wrong and keeps the upstream version aside.',
+        fr: 'Avant d’appliquer un changement, ForkWatch l’analyse. Sur la branche principale, celle qu’on utilise réellement, il bloque tout ce qui semble anormal et met la version distante de côté.',
       },
       points: {
         en: [
