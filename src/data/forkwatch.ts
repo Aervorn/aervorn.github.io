@@ -57,11 +57,13 @@ export const forkwatch: App = {
       },
       points: {
         en: [
+          'Works with any Git host: GitHub, GitLab, Gitea… Paste a repository URL to watch it directly.',
           'Check one repository or all of them, pause or remove one.',
           'History of each repository and archive downloads.',
           'French or English, light or dark theme.',
         ],
         fr: [
+          'Compatible avec tous les hébergeurs Git : GitHub, GitLab, Gitea… Collez l’adresse d’un dépôt pour le surveiller directement.',
           'Vérifiez un dépôt ou tous, mettez-en un en pause ou retirez-le.',
           'Historique de chaque dépôt et téléchargement des archives.',
           'En français ou en anglais, thème clair ou sombre.',
@@ -135,8 +137,8 @@ export const forkwatch: App = {
         ],
       },
       limits: {
-        en: ['Private upstream repositories aren’t supported.'],
-        fr: ['Les dépôts d’origine privés ne sont pas pris en charge.'],
+        en: ['Fork detection and sync only work with GitHub.', 'Private upstream repositories aren’t supported.'],
+        fr: ['La détection et la synchro des forks ne fonctionnent qu’avec GitHub.', 'Les dépôts d’origine privés ne sont pas pris en charge.'],
       },
     },
     {
