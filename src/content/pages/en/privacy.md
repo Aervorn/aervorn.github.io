@@ -1,7 +1,7 @@
 ---
 title: Privacy
 description: What this website and the Aervorn apps collect about you. In short, nothing.
-updated: 2026-10-26
+updated: 2026-11-05
 ---
 
 The short version: **neither this website nor my apps collect anything about you.** No account, no analytics, no advertising, no tracking cookies.
@@ -22,7 +22,13 @@ The only network requests are made by FaviconSync and Ghosts, straight to the we
 
 Flux collects nothing and sends nothing about you. Your feeds, articles, favorites and settings are stored on your Mac.
 
-The only network requests go to the sites you subscribe to: their feeds, article pages, images and icons. If you turn on sync, Flux stores a small file per Mac in your own iCloud Drive, which only you can access.
+The only network requests go to the sites you subscribe to: their feeds, article pages, images and icons. If you turn on sync or backup, Flux stores its files in your own iCloud Drive, which only you can access.
+
+## Vestora
+
+Vestora collects nothing and sends nothing about you. Your grants, sales and household income stay on your Mac and, encrypted with your password, in your own backups.
+
+The only network requests fetch the stock price and the €/$ rate (Twelve Data, with your own key), the ECB reference rate (Frankfurter), public news about the company (Yahoo Finance and Google News) and, if you ask for them, the official income tax brackets (service-public.gouv.fr). None of these requests contains your quantities, amounts or income.
 
 ## ForkWatch
 
@@ -32,8 +38,8 @@ It contacts the Git hosts of the repositories you watch to check for changes. If
 
 ## Downloads and updates
 
-The apps are downloaded from GitHub. GitHub may record the download like any other request. The apps don't check for updates on their own yet.
+The apps are downloaded from GitHub. GitHub may record the download like any other request. Flux and Vestora check their GitHub repository once a day for a new version; this can be turned off in their settings.
 
 ## Contact
 
-For any question, open an issue on the GitHub repository of the app concerned: [Navloom](https://github.com/Aervorn/MacOS_Navloom/issues), [Flux](https://github.com/Aervorn/MacOS_Flux/issues) or [ForkWatch](https://github.com/Aervorn/Docker_ForkWatch/issues).
+For any question, open an issue on the GitHub repository of the app concerned: [Navloom](https://github.com/Aervorn/MacOS_Navloom/issues), [Flux](https://github.com/Aervorn/MacOS_Flux/issues), [Vestora](https://github.com/Aervorn/MacOS_Vestora/issues) or [ForkWatch](https://github.com/Aervorn/Docker_ForkWatch/issues).

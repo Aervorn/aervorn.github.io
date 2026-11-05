@@ -17,6 +17,7 @@ const repoDir = app.repo.split('/').pop();
         <li><b>{t('install.s2a')}</b> {t('install.s2b', vars)}</li>
         <li><b>{t('install.s3a')}</b> {t('install.s3b', vars)} <em>{t('install.s3c')}</em> {t('install.s3d')} <em>{t('install.s3e')}</em>.</li>
       </ol>
+      {app.selfUpdating && <p class="updates">{t('install.selfUpdating', vars)}</p>}
       <div class="terminal">
         <span>{t('install.terminal')}</span>
         <code>xattr -dr com.apple.quarantine /Applications/{app.name}.app</code>
@@ -83,6 +84,7 @@ const repoDir = app.repo.split('/').pop();
   .terminal span { font-family: var(--mono); font-size: 11.5px; text-transform: uppercase; letter-spacing: 0.06em; color: var(--dim); }
   .terminal code { white-space: nowrap; }
   .terminal.block { justify-content: space-between; align-items: center; }
+  .updates { margin: 0; color: var(--muted); font-size: 15px; }
   .terminal.block code { line-height: 1.8; }
   .terminal a { color: var(--fg); text-underline-offset: 4px; font-size: 14px; }
 </style>

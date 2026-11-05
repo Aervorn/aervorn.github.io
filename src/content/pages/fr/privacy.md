@@ -1,7 +1,7 @@
 ---
 title: Confidentialité
 description: Ce que ce site et les applis Aervorn collectent à votre sujet. En bref, rien.
-updated: 2026-10-26
+updated: 2026-11-05
 ---
 
 En bref : **ni ce site ni mes applis ne collectent quoi que ce soit à votre sujet.** Pas de compte, pas de statistiques, pas de publicité, pas de cookies de suivi.
@@ -22,7 +22,13 @@ Les seules requêtes réseau sont faites par FaviconSync et Ghosts, directement 
 
 Flux ne collecte rien et n'envoie rien vous concernant. Vos flux, articles, favoris et réglages sont stockés sur votre Mac.
 
-Les seules requêtes réseau vont vers les sites auxquels vous êtes abonné : leurs flux, les pages des articles, leurs images et leurs icônes. Si vous activez la synchro, Flux enregistre un petit fichier par Mac dans votre propre iCloud Drive, auquel vous seul avez accès.
+Les seules requêtes réseau vont vers les sites auxquels vous êtes abonné : leurs flux, les pages des articles, leurs images et leurs icônes. Si vous activez la synchro ou la sauvegarde, Flux enregistre ses fichiers dans votre propre iCloud Drive, auquel vous seul avez accès.
+
+## Vestora
+
+Vestora ne collecte rien et n'envoie rien vous concernant. Vos attributions, ventes et revenus du foyer restent sur votre Mac et, chiffrés avec votre mot de passe, dans vos propres sauvegardes.
+
+Les seules requêtes réseau récupèrent le cours de l'action et le taux €/$ (Twelve Data, avec votre propre clé), le taux de référence de la BCE (Frankfurter), des actualités publiques sur l'entreprise (Yahoo Finance et Google News) et, si vous le demandez, le barème officiel de l'impôt sur le revenu (service-public.gouv.fr). Aucune de ces requêtes ne contient vos quantités, montants ou revenus.
 
 ## ForkWatch
 
@@ -32,8 +38,8 @@ Il contacte les hébergeurs Git des dépôts surveillés pour détecter les chan
 
 ## Téléchargements et mises à jour
 
-Les applis se téléchargent depuis GitHub. GitHub peut enregistrer le téléchargement comme toute autre requête. Les applis ne vérifient pas encore les mises à jour d'elles-mêmes.
+Les applis se téléchargent depuis GitHub. GitHub peut enregistrer le téléchargement comme toute autre requête. Flux et Vestora consultent leur dépôt GitHub une fois par jour pour savoir si une nouvelle version existe ; c'est désactivable dans leurs réglages.
 
 ## Contact
 
-Pour toute question, ouvrez un ticket sur le dépôt GitHub de l'appli concernée : [Navloom](https://github.com/Aervorn/MacOS_Navloom/issues), [Flux](https://github.com/Aervorn/MacOS_Flux/issues) ou [ForkWatch](https://github.com/Aervorn/Docker_ForkWatch/issues).
+Pour toute question, ouvrez un ticket sur le dépôt GitHub de l'appli concernée : [Navloom](https://github.com/Aervorn/MacOS_Navloom/issues), [Flux](https://github.com/Aervorn/MacOS_Flux/issues), [Vestora](https://github.com/Aervorn/MacOS_Vestora/issues) ou [ForkWatch](https://github.com/Aervorn/Docker_ForkWatch/issues).

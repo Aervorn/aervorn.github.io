@@ -28,6 +28,7 @@ const isMac = app.platform === 'mac';
         </div>
       </div>
       <p class="desc">{app.description[lang]}</p>
+      {app.notice && <p class="notice">{app.notice[lang]}</p>}
       <div class="cta">
         {isMac ? (
           <>
@@ -105,6 +106,15 @@ const isMac = app.platform === 'mac';
   }
   .tagline { margin: 8px 0 0; font-size: clamp(17px, 2vw, 21px); }
   .desc { max-width: 62ch; color: var(--muted); margin: 26px 0 0; font-size: 16.5px; }
+  .notice {
+    max-width: 62ch;
+    margin: 16px 0 0;
+    padding: 10px 14px;
+    border-radius: 12px;
+    border: 1px solid color-mix(in srgb, var(--a) 40%, transparent);
+    background: color-mix(in srgb, var(--a) 10%, transparent);
+    font-size: 14.5px;
+  }
   .cta { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 28px; }
   .dl { background: linear-gradient(135deg, var(--a), var(--b)); color: var(--on-a); box-shadow: 0 12px 30px -12px var(--a); }
   .facts {

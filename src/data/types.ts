@@ -4,7 +4,8 @@ import type { T } from '../i18n/config';
 /** Name of a glyph drawn by components/Glyph.astro */
 export type GlyphName =
   | 'home' | 'star' | 'twins' | 'ghost' | 'echo' | 'ferry' | 'archive'
-  | 'feed' | 'list' | 'article' | 'magnet' | 'filter' | 'chart' | 'offline' | 'sync' | 'keyboard';
+  | 'feed' | 'list' | 'article' | 'magnet' | 'filter' | 'chart' | 'offline' | 'sync' | 'keyboard'
+  | 'coins' | 'calc' | 'bank' | 'house' | 'eye' | 'lock' | 'tag' | 'news';
 
 /** One entry of the sidebar in the app window */
 export interface AppSection {
@@ -46,4 +47,8 @@ export interface App {
   /** Short facts shown under the page title */
   facts: { label: T; value: string }[];
   privacy: T;
+  /** Important note shown under the description on the app page */
+  notice?: T;
+  /** The app installs its own updates (Sparkle) */
+  selfUpdating?: boolean;
 }

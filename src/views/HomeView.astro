@@ -27,7 +27,10 @@ const latest = (await getListedPosts(lang)).slice(0, 3);
         <p>{t('apps.note')}</p>
       </div>
       <div class="apps">
-        {macApps.map((app) => <AppCard app={app} lang={lang} />)}
+        {macApps.map((app, i) => (
+          // With an odd number of apps, the last one takes the full width
+          <AppCard app={app} lang={lang} wide={macApps.length % 2 === 1 && i === macApps.length - 1} />
+        ))}
       </div>
     </div>
   </section>
@@ -72,6 +75,7 @@ const latest = (await getListedPosts(lang)).slice(0, 3);
 
 <style>
   .apps { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 22px; }
+  .apps > :global(.wide) { grid-column: 1 / -1; }
   @media (max-width: 900px) { .apps { grid-template-columns: 1fr; } }
   .server { padding-top: 8px; }
   .stack { display: grid; gap: 22px; }
