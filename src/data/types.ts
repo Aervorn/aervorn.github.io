@@ -5,7 +5,8 @@ import type { T } from '../i18n/config';
 export type GlyphName =
   | 'home' | 'star' | 'twins' | 'ghost' | 'echo' | 'ferry' | 'archive'
   | 'feed' | 'list' | 'article' | 'magnet' | 'filter' | 'chart' | 'offline' | 'sync' | 'keyboard'
-  | 'coins' | 'calc' | 'bank' | 'house' | 'eye' | 'lock' | 'tag' | 'news';
+  | 'coins' | 'calc' | 'bank' | 'house' | 'eye' | 'lock' | 'tag' | 'news'
+  | 'sparkle' | 'grid' | 'gauge' | 'shield' | 'terminal';
 
 /** One entry of the sidebar in the app window */
 export interface AppSection {
