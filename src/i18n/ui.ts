@@ -12,7 +12,7 @@ export const ui = {
     'footer.terms': 'Terms',
 
     'home.title': 'Aervorn · Small Mac apps, woven for myself',
-    'home.description': 'Free, open-source apps: Navloom keeps your browser bookmarks in shape, Flux is a simple, good-looking RSS reader, Vestora tracks your RSUs and their French tax, Octopus takes care of your Mac with Mole and its own system tools, ForkWatch keeps a safe copy of the Git repositories you depend on.',
+    'home.description': 'Free, open-source apps: Navloom keeps your browser bookmarks in shape, Flux is a simple, good-looking RSS reader, Vestora tracks your RSUs and their French tax, Octopus takes care of your Mac with Mole and its own system tools, LabPanel gathers your homelab’s web interfaces in one window, ForkWatch keeps a safe copy of the Git repositories you depend on.',
     'hero.eyebrow': 'Independent apps · open source',
     'hero.title1': 'Small apps,',
     'hero.title2': 'woven for myself.',
@@ -113,7 +113,7 @@ export const ui = {
     'footer.terms': 'Conditions',
 
     'home.title': 'Aervorn · Petites applis Mac, tissées pour moi',
-    'home.description': 'Applis gratuites et open source : Navloom garde vos favoris en ordre, Flux est un lecteur RSS simple et joli, Vestora suit vos RSU et leur fiscalité française, Octopus prend soin de votre Mac avec Mole et ses propres outils système, ForkWatch garde une copie de secours des dépôts Git dont vous dépendez.',
+    'home.description': 'Applis gratuites et open source : Navloom garde vos favoris en ordre, Flux est un lecteur RSS simple et joli, Vestora suit vos RSU et leur fiscalité française, Octopus prend soin de votre Mac avec Mole et ses propres outils système, LabPanel réunit les interfaces web de votre homelab dans une seule fenêtre, ForkWatch garde une copie de secours des dépôts Git dont vous dépendez.',
     'hero.eyebrow': 'Applis indépendantes · open source',
     'hero.title1': 'Petites applis',
     'hero.title2': 'tissées pour moi.',
