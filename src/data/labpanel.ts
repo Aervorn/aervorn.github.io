@@ -2,11 +2,13 @@ import type { App } from './types';
 import icon from '../assets/apps/labpanel-icon.png?url';
 import home from '../assets/apps/labpanel-home.jpg';
 import dock from '../assets/apps/labpanel-dock.jpg';
+import dockFr from '../assets/apps/labpanel-dock-fr.jpg';
 import switcher from '../assets/apps/labpanel-switcher.jpg';
+import switcherFr from '../assets/apps/labpanel-switcher-fr.jpg';
 import settings from '../assets/apps/labpanel-settings.jpg';
 import settingsFr from '../assets/apps/labpanel-settings-fr.jpg';
 
-// The home, dock and switcher screenshots are the same in both languages.
+// The home screenshot has no interface text: it is used for both languages.
 const both = <V,>(v: V) => ({ en: v, fr: v });
 
 export const labpanel: App = {
@@ -86,7 +88,7 @@ export const labpanel: App = {
       heading: { en: 'Or a floating dock', fr: 'Ou un dock flottant' },
       glyph: 'grid',
       color: '#7c3aed',
-      screenshot: both(dock),
+      screenshot: { en: dock, fr: dockFr },
       screenshotAlt: { en: 'The floating dock at the bottom of LabPanel', fr: 'Le dock flottant en bas de LabPanel' },
       summary: {
         en: 'Prefer the tabs at the bottom? A floating glass dock, with icons that grow under the pointer like the macOS Dock and each service’s name and status above its icon.',
@@ -109,7 +111,7 @@ export const labpanel: App = {
       heading: { en: 'Anywhere in a few keystrokes', fr: 'Partout en quelques touches' },
       glyph: 'keyboard',
       color: '#a855f7',
-      screenshot: both(switcher),
+      screenshot: { en: switcher, fr: switcherFr },
       screenshotAlt: { en: 'The ⌘K quick switcher in LabPanel', fr: 'Le sélecteur rapide ⌘K de LabPanel' },
       summary: {
         en: 'Press ⌘K, type a few letters (prox, ha for Home Assistant, part of an address), Enter, and you’re there.',
