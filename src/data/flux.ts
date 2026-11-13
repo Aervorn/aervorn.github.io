@@ -19,7 +19,7 @@ export const flux: App = {
   slug: 'flux',
   name: 'Flux',
   platform: 'mac',
-  version: '0.5.1',
+  version: '0.6.0',
   selfUpdating: true,
   tagline: { en: 'A simple, good-looking RSS reader.', fr: 'Un lecteur RSS simple et joli.' },
   description: {
@@ -44,7 +44,7 @@ export const flux: App = {
   minMacOS: 'macOS 14',
   repo: 'https://github.com/Aervorn/MacOS_Flux',
   facts: [
-    { label: { en: 'Version', fr: 'Version' }, value: '0.5.1' },
+    { label: { en: 'Version', fr: 'Version' }, value: '0.6.0' },
     { label: { en: 'Requires', fr: 'Requiert' }, value: 'macOS 14' },
     { label: { en: 'Formats', fr: 'Formats' }, value: 'RSS · Atom · JSON' },
     { label: { en: 'Languages', fr: 'Langues' }, value: 'EN · FR' },
@@ -194,13 +194,15 @@ export const flux: App = {
       },
       points: {
         en: [
-          'Tags to organize your favorites, listed under Favorites in the sidebar.',
+          'Tags to organize your favorites, listed under Favorites in the sidebar and shown under each article.',
+          'Optionally, tagged articles leave Favorites and only appear in the view of their tags.',
           'Favorites are archived permanently, even if the site deletes the article.',
           'Old read articles are cleaned up after a delay you choose.',
           'History of the articles you opened.',
         ],
         fr: [
-          'Des tags pour ranger vos favoris, listés sous Favoris dans la barre latérale.',
+          'Des tags pour ranger vos favoris, listés sous Favoris dans la barre latérale et affichés sous chaque article.',
+          'En option, les articles tagués quittent Favoris et n’apparaissent plus que dans la vue de leurs tags.',
           'Les favoris sont archivés définitivement, même si le site supprime l’article.',
           'Les anciens articles lus sont nettoyés après le délai de votre choix.',
           'Historique des articles ouverts.',
