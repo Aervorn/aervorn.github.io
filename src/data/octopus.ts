@@ -18,7 +18,7 @@ export const octopus: App = {
   slug: 'octopus',
   name: 'Octopus',
   platform: 'mac',
-  version: '0.1.0',
+  version: '0.2.0',
   selfUpdating: true,
   tagline: {
     en: 'Cleanup, apps, security and system tools for your Mac.',
@@ -45,7 +45,7 @@ export const octopus: App = {
   minMacOS: 'macOS 14',
   repo: 'https://github.com/Aervorn/MacOS_Octopus',
   facts: [
-    { label: { en: 'Version', fr: 'Version' }, value: '0.1.0' },
+    { label: { en: 'Version', fr: 'Version' }, value: '0.2.0' },
     { label: { en: 'Requires', fr: 'Requiert' }, value: 'macOS 14' },
     { label: { en: 'Interface', fr: 'Interface' }, value: 'EN · FR' },
     { label: { en: 'Engine', fr: 'Moteur' }, value: 'Mole' },
@@ -125,12 +125,12 @@ export const octopus: App = {
       points: {
         en: [
           'Startup items with their signature: enable, disable or reveal them, several at a time.',
-          'Homebrew: one-click upgrades, formulae and casks, services, cleanup and autoremove.',
+          'Homebrew: one-click upgrades, packages excluded from updates, formulae and casks, services, cleanup and autoremove.',
           'Detects and repairs a cask stuck on “already an App at…”.',
         ],
         fr: [
           'Éléments de démarrage avec leur signature : activez, désactivez ou affichez-les, plusieurs à la fois.',
-          'Homebrew : mises à jour en un clic, formules et casks, services, nettoyage et autoremove.',
+          'Homebrew : mises à jour en un clic, paquets exclus des mises à jour, formules et casks, services, nettoyage et autoremove.',
           'Détecte et répare un cask bloqué sur « already an App at… ».',
         ],
       },
@@ -150,12 +150,12 @@ export const octopus: App = {
       points: {
         en: [
           'The biggest folders and files of your Mac or of a folder, sortable, with reveal in Finder.',
-          'Optimize: refreshes caches and services, fixes safe maintenance issues.',
+          'Optimize: refreshes system caches and services, and runs risk-free maintenance tasks.',
           'History of Mole’s recent operations and deletions.',
         ],
         fr: [
           'Les plus gros dossiers et fichiers du Mac ou d’un dossier, triables, avec affichage dans le Finder.',
-          'Optimiser : rafraîchit caches et services, répare les problèmes de maintenance sûrs.',
+          'Optimiser : rafraîchit les caches et services système, et lance les tâches d’entretien sans risque.',
           'Historique des opérations et suppressions récentes de Mole.',
         ],
       },
@@ -173,8 +173,8 @@ export const octopus: App = {
         fr: 'Des vérifications dans l’esprit de SilentKnight : SIP, volume système signé, démarrage sécurisé, Gatekeeper, FileVault, coupe-feu, XProtect et ses derniers scans, firmware et mises à jour en attente.',
       },
       points: {
-        en: ['App inspector: signature, notarization, quarantine and entitlements of an app, and quarantine removal.'],
-        fr: ['Inspecteur d’app : signature, notarisation, quarantaine et droits d’une app, et retrait de la quarantaine.'],
+        en: ['App inspector: who signed an app, whether it’s from the App Store or notarized, whether it’s sandboxed, its quarantine and entitlements, and quarantine removal.'],
+        fr: ['Inspecteur d’app : qui l’a signée, si elle vient de l’App Store ou est notarisée, si elle est dans un bac à sable, sa quarantaine et ses droits, et retrait de la quarantaine.'],
       },
     },
     {
