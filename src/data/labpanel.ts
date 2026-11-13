@@ -15,7 +15,7 @@ export const labpanel: App = {
   slug: 'labpanel',
   name: 'LabPanel',
   platform: 'mac',
-  version: '0.2.1',
+  version: '0.2.2',
   selfUpdating: true,
   tagline: {
     en: 'Your homelab’s web interfaces in one Mac window.',
@@ -42,7 +42,7 @@ export const labpanel: App = {
   minMacOS: 'macOS 26',
   repo: 'https://github.com/Aervorn/MacOS_LabPanel',
   facts: [
-    { label: { en: 'Version', fr: 'Version' }, value: '0.2.1' },
+    { label: { en: 'Version', fr: 'Version' }, value: '0.2.2' },
     { label: { en: 'Requires', fr: 'Requiert' }, value: 'macOS 26' },
     { label: { en: 'Interface', fr: 'Interface' }, value: 'EN · FR' },
     { label: { en: 'Engine', fr: 'Moteur' }, value: 'WebKit' },
@@ -118,8 +118,14 @@ export const labpanel: App = {
         fr: 'Appuyez sur ⌘K, tapez quelques lettres (prox, ha pour Home Assistant, un bout d’adresse), Entrée, et vous y êtes.',
       },
       points: {
-        en: ['Also offers the common actions for each service: reload, fill login, open in browser, unload, edit.'],
-        fr: ['Propose aussi les actions courantes de chaque service : recharger, remplir l’identifiant, ouvrir dans le navigateur, décharger, modifier.'],
+        en: [
+          'Also offers the common actions for each service: reload, fill login, open in browser, unload, edit.',
+          'Its shortcut can be changed in Settings › General, so ⌘K stays free for pages that use it, like Dockhand.',
+        ],
+        fr: [
+          'Propose aussi les actions courantes de chaque service : recharger, remplir l’identifiant, ouvrir dans le navigateur, décharger, modifier.',
+          'Son raccourci se change dans Réglages › Général, pour laisser ⌘K aux pages qui s’en servent, comme Dockhand.',
+        ],
       },
     },
     {
