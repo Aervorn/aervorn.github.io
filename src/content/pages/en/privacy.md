@@ -1,7 +1,7 @@
 ---
 title: Privacy
 description: What this website and the Aervorn apps collect about you. In short, nothing.
-updated: 2026-11-10
+updated: 2026-11-13
 ---
 
 The short version: **neither this website nor my apps collect anything about you.** No account, no analytics, no advertising, no tracking cookies.
@@ -42,6 +42,12 @@ LabPanel collects nothing and sends nothing about you. It opens the web interfac
 
 Besides your services' pages, its only network requests check once a minute that each service responds and download the official service icons once (Dashboard Icons, via jsDelivr).
 
+## Nuvora
+
+Nuvora collects nothing and sends nothing about you. Your canvases and the files you add to them stay on your Mac, with no account and no cloud. Voice notes are transcribed on your Mac by macOS speech recognition: the audio never leaves it.
+
+Its only network request reads the title, image and icon of a web link you add to a canvas, once, from that site itself; this can be turned off in its settings.
+
 ## ForkWatch
 
 ForkWatch runs on your own server and sends nothing to me. Its data stays in the folder you choose on that server.
@@ -50,8 +56,8 @@ It contacts the Git hosts of the repositories you watch to check for changes. If
 
 ## Downloads and updates
 
-The apps are downloaded from GitHub. GitHub may record the download like any other request. Flux, Vestora, Octopus and LabPanel check their GitHub repository once a day for a new version; this can be turned off in their settings.
+The apps are downloaded from GitHub. GitHub may record the download like any other request. Flux, Vestora, Octopus, LabPanel and Nuvora check their GitHub repository once a day for a new version; this can be turned off in their settings.
 
 ## Contact
 
-For any question, open an issue on the GitHub repository of the app concerned: [Navloom](https://github.com/Aervorn/MacOS_Navloom/issues), [Flux](https://github.com/Aervorn/MacOS_Flux/issues), [Vestora](https://github.com/Aervorn/MacOS_Vestora/issues), [Octopus](https://github.com/Aervorn/MacOS_Octopus/issues), [LabPanel](https://github.com/Aervorn/MacOS_LabPanel/issues) or [ForkWatch](https://github.com/Aervorn/Docker_ForkWatch/issues).
+For any question, open an issue on the GitHub repository of the app concerned: [Navloom](https://github.com/Aervorn/MacOS_Navloom/issues), [Flux](https://github.com/Aervorn/MacOS_Flux/issues), [Vestora](https://github.com/Aervorn/MacOS_Vestora/issues), [Octopus](https://github.com/Aervorn/MacOS_Octopus/issues), [LabPanel](https://github.com/Aervorn/MacOS_LabPanel/issues), [Nuvora](https://github.com/Aervorn/MacOS_Nuvora/issues) or [ForkWatch](https://github.com/Aervorn/Docker_ForkWatch/issues).

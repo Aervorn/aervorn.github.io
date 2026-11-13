@@ -1,12 +1,12 @@
 ---
 title: Terms of use
 description: The conditions for using the Aervorn apps and this website.
-updated: 2026-11-10
+updated: 2026-11-13
 ---
 
 ## The apps
 
-Navloom, Flux, Vestora, Octopus, LabPanel and ForkWatch are free, open-source software, released under the [MIT License](https://opensource.org/license/mit). You can use, copy, modify and share them, including for commercial purposes, as long as the license notice is kept.
+Navloom, Flux, Vestora, Octopus, LabPanel, Nuvora and ForkWatch are free, open-source software, released under the [MIT License](https://opensource.org/license/mit). You can use, copy, modify and share them, including for commercial purposes, as long as the license notice is kept.
 
 The apps are provided **“as is”, without any warranty**, express or implied. I build and test them with care, and Navloom and ForkWatch archive data before changing it, but I can't be held responsible for any data loss or other damage resulting from their use. Keep your own backups of what matters to you.
 
@@ -34,4 +34,4 @@ These terms may change, for example when a new app is released. The date at the 
 
 ## Contact
 
-For any question, open an issue on the GitHub repository of the app concerned: [Navloom](https://github.com/Aervorn/MacOS_Navloom/issues), [Flux](https://github.com/Aervorn/MacOS_Flux/issues), [Vestora](https://github.com/Aervorn/MacOS_Vestora/issues), [Octopus](https://github.com/Aervorn/MacOS_Octopus/issues), [LabPanel](https://github.com/Aervorn/MacOS_LabPanel/issues) or [ForkWatch](https://github.com/Aervorn/Docker_ForkWatch/issues).
+For any question, open an issue on the GitHub repository of the app concerned: [Navloom](https://github.com/Aervorn/MacOS_Navloom/issues), [Flux](https://github.com/Aervorn/MacOS_Flux/issues), [Vestora](https://github.com/Aervorn/MacOS_Vestora/issues), [Octopus](https://github.com/Aervorn/MacOS_Octopus/issues), [LabPanel](https://github.com/Aervorn/MacOS_LabPanel/issues), [Nuvora](https://github.com/Aervorn/MacOS_Nuvora/issues) or [ForkWatch](https://github.com/Aervorn/Docker_ForkWatch/issues).

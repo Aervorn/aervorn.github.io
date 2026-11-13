@@ -1,12 +1,12 @@
 ---
 title: Conditions d'utilisation
 description: Les conditions d'utilisation des applis Aervorn et de ce site.
-updated: 2026-11-10
+updated: 2026-11-13
 ---
 
 ## Les applis
 
-Navloom, Flux, Vestora, Octopus, LabPanel et ForkWatch sont des logiciels libres et gratuits, distribués sous [licence MIT](https://opensource.org/license/mit). Vous pouvez les utiliser, les copier, les modifier et les partager, y compris à des fins commerciales, à condition de conserver la mention de licence.
+Navloom, Flux, Vestora, Octopus, LabPanel, Nuvora et ForkWatch sont des logiciels libres et gratuits, distribués sous [licence MIT](https://opensource.org/license/mit). Vous pouvez les utiliser, les copier, les modifier et les partager, y compris à des fins commerciales, à condition de conserver la mention de licence.
 
 Les applis sont fournies **« telles quelles », sans aucune garantie**, expresse ou implicite. Je les développe et les teste avec soin, et Navloom comme ForkWatch archivent les données avant de les modifier, mais je ne peux pas être tenu responsable d'une perte de données ou de tout autre dommage lié à leur utilisation. Gardez vos propres sauvegardes de ce qui compte pour vous.
 
@@ -34,4 +34,4 @@ Ces conditions peuvent évoluer, par exemple à la sortie d'une nouvelle appli. 
 
 ## Contact
 
-Pour toute question, ouvrez un ticket sur le dépôt GitHub de l'appli concernée : [Navloom](https://github.com/Aervorn/MacOS_Navloom/issues), [Flux](https://github.com/Aervorn/MacOS_Flux/issues), [Vestora](https://github.com/Aervorn/MacOS_Vestora/issues), [Octopus](https://github.com/Aervorn/MacOS_Octopus/issues), [LabPanel](https://github.com/Aervorn/MacOS_LabPanel/issues) ou [ForkWatch](https://github.com/Aervorn/Docker_ForkWatch/issues).
+Pour toute question, ouvrez un ticket sur le dépôt GitHub de l'appli concernée : [Navloom](https://github.com/Aervorn/MacOS_Navloom/issues), [Flux](https://github.com/Aervorn/MacOS_Flux/issues), [Vestora](https://github.com/Aervorn/MacOS_Vestora/issues), [Octopus](https://github.com/Aervorn/MacOS_Octopus/issues), [LabPanel](https://github.com/Aervorn/MacOS_LabPanel/issues), [Nuvora](https://github.com/Aervorn/MacOS_Nuvora/issues) ou [ForkWatch](https://github.com/Aervorn/Docker_ForkWatch/issues).

@@ -6,8 +6,9 @@ import { forkwatch } from './forkwatch';
 import { vestora } from './vestora';
 import { octopus } from './octopus';
 import { labpanel } from './labpanel';
+import { nuvora } from './nuvora';
 
 export type { App, AppSection } from './types';
-export const apps = [navloom, flux, vestora, octopus, labpanel, forkwatch];
+export const apps = [navloom, flux, vestora, octopus, nuvora, labpanel, forkwatch];
 export const macApps = apps.filter((a) => a.platform === 'mac');
 export const serverApps = apps.filter((a) => a.platform === 'server');
