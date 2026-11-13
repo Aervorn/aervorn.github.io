@@ -6,7 +6,7 @@ export const forkwatch: App = {
   slug: 'forkwatch',
   name: 'ForkWatch',
   platform: 'server',
-  version: '2.1.1',
+  version: '2.2.0',
   tagline: {
     en: 'A safe copy of the Git repositories you depend on.',
     fr: 'Une copie de secours des dépôts Git dont vous dépendez.',
@@ -32,7 +32,7 @@ export const forkwatch: App = {
   requirements: { en: 'Docker · NAS or home server', fr: 'Docker · NAS ou serveur maison' },
   repo: 'https://github.com/Aervorn/Docker_ForkWatch',
   facts: [
-    { label: { en: 'Version', fr: 'Version' }, value: '2.1.1' },
+    { label: { en: 'Version', fr: 'Version' }, value: '2.2.0' },
     { label: { en: 'Runs on', fr: 'Tourne sur' }, value: 'Docker' },
     { label: { en: 'Written in', fr: 'Écrit en' }, value: 'Python' },
     { label: { en: 'Languages', fr: 'Langues' }, value: 'EN · FR' },
@@ -58,13 +58,13 @@ export const forkwatch: App = {
       points: {
         en: [
           'Works with any Git host: GitHub, GitLab, Gitea… Paste a repository URL to watch it directly.',
-          'Check one repository or all of them, pause or remove one.',
+          'Check one repository or all of them, pause or remove one, add or remove its GitHub fork.',
           'History of each repository and archive downloads.',
           'French or English, light or dark theme.',
         ],
         fr: [
           'Compatible avec tous les hébergeurs Git : GitHub, GitLab, Gitea… Collez l’adresse d’un dépôt pour le surveiller directement.',
-          'Vérifiez un dépôt ou tous, mettez-en un en pause ou retirez-le.',
+          'Vérifiez un dépôt ou tous, mettez-en un en pause, retirez-le, ajoutez ou retirez son fork GitHub.',
           'Historique de chaque dépôt et téléchargement des archives.',
           'En français ou en anglais, thème clair ou sombre.',
         ],
