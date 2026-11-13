@@ -128,6 +128,9 @@ export const ui = {
     'links.expand': 'expand +',
     'links.collapse': 'collapse −',
     'links.shots': 'Screenshots',
+    'lightbox.close': 'Close',
+    'lightbox.prev': 'Previous screenshot',
+    'lightbox.next': 'Next screenshot',
     'links.empty': 'The first links are on their way.',
     'blogpage.eyebrow': 'U03 · Blog',
 
@@ -262,6 +265,9 @@ export const ui = {
     'links.expand': 'déplier +',
     'links.collapse': 'replier −',
     'links.shots': 'Captures',
+    'lightbox.close': 'Fermer',
+    'lightbox.prev': 'Capture précédente',
+    'lightbox.next': 'Capture suivante',
     'links.empty': 'Les premiers liens arrivent bientôt.',
     'blogpage.eyebrow': 'U03 · Blog',
 

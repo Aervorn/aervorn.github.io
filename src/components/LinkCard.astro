@@ -46,7 +46,7 @@ const id = link.id.split('/').slice(1).join('/');
         <h3 class="label">{t('links.shots')}</h3>
         <div class="shots">
           {d.screenshots.map((s) => (
-            <a href={s.src.src}><Image src={s.src} alt={s.alt} widths={[400, 800]} sizes="(max-width: 860px) 100vw, 420px" /></a>
+            <a href={s.src.src} data-lightbox data-alt={s.alt}><Image src={s.src} alt={s.alt} widths={[400, 800]} sizes="(max-width: 860px) 100vw, 420px" /></a>
           ))}
         </div>
       </div>

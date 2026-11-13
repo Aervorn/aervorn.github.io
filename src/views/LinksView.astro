@@ -52,6 +52,16 @@ const count = (n: number) => `${n} ${n > 1 ? t('links.many') : t('links.one')}`;
       )}
     </div>
   </section>
+
+  <dialog class="lightbox" aria-label={t('links.shots')}>
+    <button type="button" class="lb-close" aria-label={t('lightbox.close')}>×</button>
+    <button type="button" class="lb-nav lb-prev" aria-label={t('lightbox.prev')}>‹</button>
+    <figure>
+      <img alt="" />
+      <figcaption></figcaption>
+    </figure>
+    <button type="button" class="lb-nav lb-next" aria-label={t('lightbox.next')}>›</button>
+  </dialog>
 </Base>
 
 <script>
@@ -80,6 +90,39 @@ const count = (n: number) => `${n} ${n > 1 ? t('links.many') : t('links.one')}`;
       group.querySelectorAll('button').forEach((b) => b.setAttribute('aria-pressed', String(b === btn)));
       update();
     });
+    // Screenshots open in a popup instead of replacing the page.
+    // Without JavaScript, the links still open the full image.
+    const box = document.querySelector<HTMLDialogElement>('.lightbox')!;
+    const img = box.querySelector('img')!;
+    const caption = box.querySelector('figcaption')!;
+    let group: HTMLAnchorElement[] = [];
+    let index = 0;
+    const show = (i: number) => {
+      index = (i + group.length) % group.length;
+      const a = group[index];
+      img.src = a.href;
+      img.alt = a.dataset.alt ?? '';
+      caption.textContent = a.dataset.alt ?? '';
+      box.classList.toggle('single', group.length < 2);
+    };
+    document.addEventListener('click', (e) => {
+      const a = (e.target as HTMLElement).closest<HTMLAnchorElement>('a[data-lightbox]');
+      if (!a) return;
+      e.preventDefault();
+      group = [...a.closest('.shots')!.querySelectorAll<HTMLAnchorElement>('a[data-lightbox]')];
+      show(group.indexOf(a));
+      box.showModal();
+    });
+    box.querySelector('.lb-close')!.addEventListener('click', () => box.close());
+    box.querySelector('.lb-prev')!.addEventListener('click', () => show(index - 1));
+    box.querySelector('.lb-next')!.addEventListener('click', () => show(index + 1));
+    // A click outside the image (on the dark backdrop) closes the popup
+    box.addEventListener('click', (e) => { if (e.target === box || e.target === box.querySelector('figure')) box.close(); });
+    box.addEventListener('keydown', (e) => {
+      if (e.key === 'ArrowLeft') show(index - 1);
+      if (e.key === 'ArrowRight') show(index + 1);
+    });
+
     // Opening a card from a link like /links#proxmox-ve
     const target = location.hash && document.getElementById(location.hash.slice(1));
     if (target instanceof HTMLDetailsElement) target.open = true;
@@ -107,4 +150,38 @@ const count = (n: number) => `${n} ${n > 1 ? t('links.many') : t('links.one')}`;
   .count { font-family: var(--mono); font-size: 13px; color: var(--muted); margin: 0 0 14px; }
   .list { display: grid; gap: 14px; }
   .empty { font-family: var(--mono); color: var(--muted); }
+
+  .lightbox {
+    width: 100vw;
+    height: 100vh;
+    max-width: none;
+    max-height: none;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    background: transparent;
+    color: var(--fg);
+  }
+  .lightbox[open] { display: grid; grid-template-columns: auto minmax(0, 1fr) auto; align-items: center; }
+  .lightbox::backdrop { background: rgba(7, 6, 14, 0.88); backdrop-filter: blur(6px); }
+  .lightbox figure { margin: 0; height: 100vh; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 12px; padding: 56px 8px 24px; }
+  .lightbox img { max-width: 100%; max-height: calc(100vh - 120px); object-fit: contain; border-radius: 12px; border: 1px solid var(--line); box-shadow: 0 30px 80px -20px rgba(0, 0, 0, 0.8); }
+  .lightbox figcaption { font-family: var(--mono); font-size: 13px; color: var(--muted); text-align: center; }
+  .lb-close, .lb-nav {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    border: 1px solid rgba(196, 190, 255, 0.2);
+    background: rgba(19, 18, 31, 0.8);
+    color: var(--fg);
+    font-size: 26px;
+    line-height: 1;
+    cursor: pointer;
+  }
+  .lb-close:hover, .lb-nav:hover { border-color: var(--teal); color: var(--teal); }
+  .lb-close { position: fixed; top: 16px; right: 16px; z-index: 1; }
+  .lb-nav { margin: 0 16px; }
+  .lightbox.single .lb-nav { visibility: hidden; }
+  .shots :global(a) { cursor: zoom-in; }
+  @media (max-width: 640px) { .lb-nav { margin: 0 4px; width: 40px; height: 40px; } }
 </style>

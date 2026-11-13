@@ -9,11 +9,11 @@ repo: https://github.com/vorssaint/vorssaint-utils
 logo: ../../../assets/links/vorssaint.png
 screenshots:
   - src: ../../../assets/links/vorssaint-fr-1.png
-    alt: barre_des_menus
+    alt: Customisation de l'icône de la barre de menu
   - src: ../../../assets/links/vorssaint-fr-2.png
-    alt: dynamic_island
+    alt: Réglages de la Dynamic Island
   - src: ../../../assets/links/vorssaint-fr-3.png
-    alt: functions
+    alt: Liste des fonctions
 order: 20
 draft: false
 ---
