@@ -8,11 +8,11 @@ site: https://vorssaint.com
 repo: https://github.com/vorssaint/vorssaint-utils
 logo: ../../../assets/links/vorssaint.png
 screenshots:
-  - src: ../../../assets/links/vorssaint-1.png
+  - src: ../../../assets/links/vorssaint-en-1.png
     alt: barre_des_menus
-  - src: ../../../assets/links/vorssaint-2.png
+  - src: ../../../assets/links/vorssaint-en-2.png
     alt: dynamic_island
-  - src: ../../../assets/links/vorssaint-3.png
+  - src: ../../../assets/links/vorssaint-en-3.png
     alt: functions
 order: 20
 draft: false
