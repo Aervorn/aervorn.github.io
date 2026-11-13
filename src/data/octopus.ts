@@ -19,6 +19,7 @@ export const octopus: App = {
   name: 'Octopus',
   platform: 'mac',
   version: '0.2.0',
+  released: '2026-11-13T10:07+01:00',
   selfUpdating: true,
   tagline: {
     en: 'Cleanup, apps, security and system tools for your Mac.',

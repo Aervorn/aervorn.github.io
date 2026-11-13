@@ -15,6 +15,7 @@ export const vestora: App = {
   name: 'Vestora',
   platform: 'mac',
   version: '0.1.1',
+  released: '2026-11-05T07:01+01:00',
   selfUpdating: true,
   tagline: {
     en: 'Track your RSUs and the French tax on selling them.',

@@ -1,0 +1,78 @@
+---
+import Base from '../layouts/Base.astro';
+import PageHead from '../components/PageHead.astro';
+import AppCard from '../components/AppCard.astro';
+import AiNote from '../components/AiNote.astro';
+import { macApps, serverApps } from '../data/apps';
+import type { Lang } from '../i18n/config';
+import { useT } from '../i18n/ui';
+
+interface Props { lang: Lang }
+const { lang } = Astro.props;
+const t = useT(lang);
+---
+<Base lang={lang} title={t('appspage.title')} description={t('home.description')}>
+  <PageHead status={t('appspage.eyebrow')} color="var(--navloom)" path="~/apps" command="ls" compact>
+    <Fragment slot="title">{t('hero.title1')}{' '}<span class="weave">{t('hero.title2').replace(/\.$/, '')}</span></Fragment>
+    <p>{t('hero.lede1')} <strong>{t('hero.lede2')}</strong>{t('hero.lede3')}</p>
+    <ul class="promises">{t('hero.promises').map((p) => <li>{p}</li>)}</ul>
+  </PageHead>
+
+  <section class="section apps-section" id="apps">
+    <div class="wrap">
+      <div class="section-head">
+        <div>
+          <span class="eyebrow">{t('apps.eyebrow')}</span>
+          <h2>{t('apps.title')}</h2>
+        </div>
+        <p>{t('apps.note')}</p>
+      </div>
+      <div class="apps">
+        {macApps.map((app, i) => (
+          // With an odd number of apps, the last one takes the full width
+          <AppCard app={app} lang={lang} wide={macApps.length % 2 === 1 && i === macApps.length - 1} />
+        ))}
+      </div>
+    </div>
+  </section>
+
+  {serverApps.length > 0 && (
+    <section class="section server" id="self-hosted">
+      <div class="wrap">
+        <div class="section-head">
+          <div>
+            <span class="eyebrow">{t('server.eyebrow')}</span>
+            <h2>{t('server.title')}</h2>
+          </div>
+          <p>{t('server.note')}</p>
+        </div>
+        <div class="stack">
+          {serverApps.map((app) => <AppCard app={app} lang={lang} wide />)}
+        </div>
+      </div>
+    </section>
+  )}
+
+  <section class="note-section">
+    <div class="wrap"><AiNote lang={lang} /></div>
+  </section>
+
+</Base>
+
+<style>
+  .apps { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 22px; }
+  .apps > :global(.wide) { grid-column: 1 / -1; }
+  @media (max-width: 900px) { .apps { grid-template-columns: 1fr; } }
+  .server { padding-top: 8px; }
+  .stack { display: grid; gap: 22px; }
+  .note-section { padding-block: 8px 40px; }
+  .apps-section { padding-top: 24px; }
+  .weave {
+    background: linear-gradient(100deg, var(--navloom) 0%, var(--navloom-2) 30%, var(--teal) 55%, var(--flux-2) 78%, var(--flux) 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+  .promises { list-style: none; padding: 0; margin: 18px 0 0; display: flex; flex-wrap: wrap; gap: 6px 18px; font-family: var(--mono); font-size: 13px; }
+  .promises li::before { content: '✓ '; color: var(--teal); }
+</style>

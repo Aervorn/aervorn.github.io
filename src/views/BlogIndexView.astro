@@ -15,7 +15,7 @@ const used = [...new Set(posts.map((p) => p.data.category))] as CategoryId[];
 <Base lang={lang} title={t('blogpage.title')} description={t('blogpage.description')}>
   <section class="head">
     <div class="wrap">
-      <span class="eyebrow">Blog</span>
+      <span class="status" style="--dot: var(--flux)">{t('blogpage.eyebrow')}</span>
       <h1>{t('blogpage.h1a')} <em>{t('blogpage.h1b')}</em>.</h1>
       <p>{t('blogpage.intro')} <a href={lang === 'fr' ? '/fr/rss.xml' : '/rss.xml'}>{t('blogpage.rss')}</a>.</p>
     </div>

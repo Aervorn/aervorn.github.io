@@ -9,17 +9,27 @@ const t = useT(lang);
 const other: Lang = lang === 'en' ? 'fr' : 'en';
 // No translation of this page: send to the home page of the other language
 const switchTo = alternates[other] ?? localePath(other, '/');
+
+// The three sections of the site, shown as paths
+const links = [
+  { label: '/apps', href: localePath(lang, '/apps') },
+  { label: lang === 'fr' ? '/liens' : '/links', href: lang === 'fr' ? '/fr/liens' : '/links' },
+  { label: '/blog', href: localePath(lang, '/blog') },
+];
+const here = Astro.url.pathname.replace(/\/$/, '');
+const isCurrent = (href: string) => here === href || here.startsWith(`${href}/`);
 ---
 <header class="nav">
   <div class="wrap">
-    <a class="brand" href={localePath(lang, '/')} aria-label="Aervorn">
+    <a class="brand" href={localePath(lang, '/')} aria-label="HomeLab-901">
       <Logo />
-      Aervorn
+      <span><span class="tilde">~/</span>homelab-901</span>
     </a>
     <nav aria-label="Main">
-      <a href={localePath(lang, '/#apps')}>{t('nav.apps')}</a>
-      <a href={localePath(lang, '/blog')}>{t('nav.blog')}</a>
-      <a class="gh" href="https://github.com/Aervorn">GitHub</a>
+      {links.map((l) => (
+        <a href={l.href} aria-current={isCurrent(l.href) ? 'page' : undefined}>{l.label}</a>
+      ))}
+      <a class="gh" href="https://github.com/Aervorn">github</a>
       <a class="lang" href={switchTo} hreflang={other} lang={other} title={t('nav.switch')}>{t('nav.switchShort')}</a>
     </nav>
   </div>
@@ -30,37 +40,38 @@ const switchTo = alternates[other] ?? localePath(other, '/');
     position: sticky;
     top: env(safe-area-inset-top, 0px);
     z-index: 9;
-    background: rgba(10, 9, 19, 0.72);
+    background: rgba(7, 6, 14, 0.78);
     backdrop-filter: blur(14px) saturate(140%);
     -webkit-backdrop-filter: blur(14px) saturate(140%);
     border-bottom: 1px solid var(--line);
   }
-  .wrap { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding-block: 14px; }
+  .wrap { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 10px 16px; padding-block: 12px; }
   .brand {
     display: flex;
     align-items: center;
-    gap: 10px;
+    gap: 12px;
     text-decoration: none;
-    font-family: var(--display);
-    font-weight: 700;
-    font-size: 20px;
-    letter-spacing: -0.02em;
+    font-family: var(--mono);
+    font-weight: 500;
+    font-size: 16px;
   }
-  nav { display: flex; align-items: center; gap: 4px; font-size: 14px; }
+  .tilde { color: var(--teal); }
+  nav { display: flex; flex-wrap: wrap; align-items: center; gap: 2px; font-family: var(--mono); font-size: 14px; }
   nav a {
     text-decoration: none;
     color: var(--muted);
-    padding: 7px 11px;
-    border-radius: 999px;
-    transition: color 0.2s, background 0.2s;
+    padding: 10px 11px;
+    border-bottom: 2px solid transparent;
+    transition: color 0.2s, border-color 0.2s;
   }
-  nav a:hover { color: var(--fg); background: rgba(255, 255, 255, 0.05); }
+  nav a:hover { color: var(--fg); }
+  nav a[aria-current='page'] { color: var(--teal); border-bottom-color: var(--teal); }
   .lang {
     margin-left: 6px;
-    font-family: var(--mono);
     font-size: 12px;
     border: 1px solid var(--line);
-    padding: 5px 10px;
+    border-radius: 6px;
+    padding: 6px 10px;
   }
   @media (max-width: 520px) { .gh { display: none; } }
 </style>

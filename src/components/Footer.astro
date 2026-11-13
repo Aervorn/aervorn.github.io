@@ -8,7 +8,7 @@ const year = new Date().getFullYear();
 ---
 <footer>
   <div class="wrap">
-    <span>© {year} Aervorn · {t('footer.made')}</span>
+    <span>© {year} HomeLab-901 · {t('footer.by')} <a href="https://github.com/Aervorn">Aervorn</a> · {t('footer.made')}</span>
     <nav aria-label="Footer">
       <a href={localePath(lang, '/blog')}>{t('nav.blog')}</a>
       <a href={lang === 'fr' ? '/fr/rss.xml' : '/rss.xml'}>RSS</a>
@@ -21,7 +21,7 @@ const year = new Date().getFullYear();
 
 <style>
   footer { border-top: 1px solid var(--line); margin-top: 40px; }
-  .wrap { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 20px; padding-block: 34px; color: var(--dim); font-size: 14px; }
+  .wrap { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 20px; padding-block: 34px; color: var(--muted); font-family: var(--mono); font-size: 13px; }
   nav { display: flex; flex-wrap: wrap; gap: 8px 18px; }
   a { text-decoration: none; }
   a:hover { color: var(--fg); }

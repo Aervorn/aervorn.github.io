@@ -1,0 +1,48 @@
+---
+import { getJournal, logStamp } from '../utils/journal';
+import type { Lang } from '../i18n/config';
+import { useT } from '../i18n/ui';
+interface Props { lang: Lang }
+const { lang } = Astro.props;
+const t = useT(lang);
+const entries = await getJournal(lang, (app, version) => t('journal.release', { app, version }));
+---
+{entries.length > 0 && (
+  <section class="journal" aria-label={t('journal.label')}>
+    <div class="wrap">
+      <div class="log">
+        <p class="cmd">$ tail -n {entries.length} journal.log</p>
+        <ol>
+          {entries.map((e) => (
+            <li>
+              <time datetime={e.date.toISOString()}>[{logStamp(e.date)}]</time>
+              <span class:list={['kind', e.kind]}>[{e.kind}]</span>
+              <a href={e.href}>{e.text}</a>
+            </li>
+          ))}
+        </ol>
+      </div>
+    </div>
+  </section>
+)}
+
+<style>
+  .journal { padding-bottom: 80px; }
+  .log {
+    font-family: var(--mono);
+    font-size: 14px;
+    background: #0d0c17;
+    border: 1px solid var(--line);
+    border-radius: 14px;
+    padding: 22px 26px;
+  }
+  .cmd { margin: 0 0 8px; color: var(--muted); }
+  ol { list-style: none; margin: 0; padding: 0; display: grid; gap: 6px; }
+  li { display: flex; flex-wrap: wrap; gap: 0 14px; }
+  time { color: var(--muted); }
+  .kind { width: 6ch; }
+  .apps { color: var(--navloom); }
+  .blog { color: var(--flux); }
+  a { text-decoration: none; }
+  a:hover { text-decoration: underline; text-underline-offset: 4px; }
+</style>

@@ -20,6 +20,7 @@ export const navloom: App = {
   name: 'Navloom',
   platform: 'mac',
   version: '0.2.0',
+  released: '2026-11-13T09:44+01:00',
   selfUpdating: true,
   tagline: {
     en: 'Keep your browser bookmarks and tabs in shape.',

@@ -1,0 +1,46 @@
+---
+// Header of a section page: status line, terminal prompt, big title with a
+// blinking cursor, and an optional intro on the right.
+interface Props {
+  /** Status label, e.g. 'U02 · Links' */
+  status: string;
+  /** Color of the status dot */
+  color?: string;
+  /** Folder shown in the prompt, e.g. '~/links' */
+  path?: string;
+  /** Command typed in the prompt */
+  command: string;
+  /** Use a smaller title (section pages) */
+  compact?: boolean;
+}
+const { status, color = 'var(--teal)', path = '~', command, compact = false } = Astro.props;
+---
+<section class:list={['head', { compact }]}>
+  <div class="wrap">
+    <div class="title">
+      <span class="status" style={`--dot: ${color}`}>{status}</span>
+      <p class="prompt"><span class="host">aervorn@homelab-901</span>:<span class="path">{path}</span>$ {command}</p>
+      <h1><slot name="title" /><span class="cursor" aria-hidden="true">_</span></h1>
+    </div>
+    {Astro.slots.has('default') && <div class="side"><slot /></div>}
+  </div>
+</section>
+
+<style>
+  .head { padding-block: 84px 48px; }
+  .wrap { display: flex; flex-wrap: wrap; align-items: flex-end; justify-content: space-between; gap: 28px 40px; }
+  .title { flex: 1 1 560px; min-width: 0; }
+  .prompt { margin-top: 22px; }
+  h1 {
+    font-family: var(--display);
+    font-weight: 800;
+    font-size: clamp(44px, 7vw, 88px);
+    line-height: 0.95;
+    letter-spacing: -0.05em;
+    margin: 12px 0 0;
+    text-wrap: balance;
+  }
+  .compact h1 { font-size: clamp(40px, 6vw, 80px); }
+  .side { flex: 0 1 440px; color: var(--muted); font-size: 17.5px; }
+  .side :global(p) { margin: 0; }
+</style>

@@ -20,6 +20,7 @@ export const flux: App = {
   name: 'Flux',
   platform: 'mac',
   version: '0.6.0',
+  released: '2026-11-13T09:18+01:00',
   selfUpdating: true,
   tagline: { en: 'A simple, good-looking RSS reader.', fr: 'Un lecteur RSS simple et joli.' },
   description: {

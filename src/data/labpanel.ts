@@ -16,6 +16,7 @@ export const labpanel: App = {
   name: 'LabPanel',
   platform: 'mac',
   version: '0.2.2',
+  released: '2026-11-13T09:33+01:00',
   selfUpdating: true,
   tagline: {
     en: 'Your homelab’s web interfaces in one Mac window.',

@@ -1,15 +1,10 @@
 ---
-// The Aervorn mark: three colored weft threads crossed by two warp threads.
+// The HomeLab-901 mark: a terminal prompt, "~/9_", in a dark rounded square.
+// The colors come from the Aervorn threads: teal prompt, orange cursor.
 interface Props { size?: number }
-const { size = 28 } = Astro.props;
+const { size = 34 } = Astro.props;
 ---
-<svg width={size} height={size} viewBox="0 0 28 28" aria-hidden="true">
-  <rect width="28" height="28" rx="8" fill="#1C1B33" />
-  <g stroke-width="2.6" stroke-linecap="round" fill="none">
-    <path d="M7 9.5h14" stroke="#A78BFA" />
-    <path d="M7 14h14" stroke="#2DD4BF" />
-    <path d="M7 18.5h14" stroke="#FF6A3D" />
-    <path d="M10 6.5v15" stroke="#EEEBFA" stroke-opacity=".85" />
-    <path d="M18 6.5v15" stroke="#EEEBFA" stroke-opacity=".85" />
-  </g>
+<svg width={size} height={size} viewBox="0 0 34 34" aria-hidden="true">
+  <rect x="0.5" y="0.5" width="33" height="33" rx="9" fill="#07060E" stroke="#C4BEFF" stroke-opacity=".22" />
+  <text x="17" y="20.8" text-anchor="middle" font-family="'Geist Mono', ui-monospace, Menlo, monospace" font-size="10.5" font-weight="500" letter-spacing="-0.9"><tspan fill="#2DD4BF">~/</tspan><tspan fill="#EEEBFA">9</tspan><tspan fill="#FF6A3D">_</tspan></text>
 </svg>

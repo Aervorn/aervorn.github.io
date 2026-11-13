@@ -7,6 +7,7 @@ export const forkwatch: App = {
   name: 'ForkWatch',
   platform: 'server',
   version: '2.2.0',
+  released: '2026-11-13T12:41+01:00',
   tagline: {
     en: 'A safe copy of the Git repositories you depend on.',
     fr: 'Une copie de secours des dépôts Git dont vous dépendez.',

@@ -14,6 +14,7 @@ export const nuvora: App = {
   name: 'Nuvora',
   platform: 'mac',
   version: '0.1.0',
+  released: '2026-11-13T08:59+01:00',
   selfUpdating: true,
   tagline: {
     en: 'Infinite canvases for your ideas, 100% local.',

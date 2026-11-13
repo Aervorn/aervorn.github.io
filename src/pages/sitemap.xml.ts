@@ -5,8 +5,8 @@ import { getAllPosts, postUrl } from '../utils/posts';
 import { langs, localePath } from '../i18n/config';
 
 export async function GET({ site }: APIContext) {
-  const paths = ['/', '/blog', '/privacy', '/terms', ...apps.map((a) => `/${a.slug}`)];
-  const urls = langs.flatMap((l) => paths.map((p) => localePath(l, p)));
+  const paths = ['/', '/apps', '/blog', '/privacy', '/terms', ...apps.map((a) => `/apps/${a.slug}`)];
+  const urls = [...langs.flatMap((l) => paths.map((p) => localePath(l, p))), '/links', '/fr/liens'];
   const posts = (await getAllPosts()).filter((p) => !p.data.draft).map(postUrl);
 
   // GitHub Pages serves every page as a folder: /blog → /blog/

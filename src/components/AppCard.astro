@@ -36,7 +36,7 @@ const [a, b] = app.accent;
 
   <div class="actions">
     <a class="btn btn-primary" href={isMac ? `${app.repo}/releases/latest` : app.repo}>{isMac ? t('card.download') : t('card.github')}</a>
-    <a class="btn btn-ghost" href={localePath(lang, `/${app.slug}`)}>{t('card.more')}</a>
+    <a class="btn btn-ghost" href={localePath(lang, `/apps/${app.slug}`)}>{t('card.more')}</a>
     <span class="req">{app.requirements[lang]}</span>
   </div>
 </article>

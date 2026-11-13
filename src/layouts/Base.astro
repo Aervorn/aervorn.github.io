@@ -35,8 +35,8 @@ const rss = lang === 'fr' ? '/fr/rss.xml' : '/rss.xml';
     <link rel="canonical" href={canonical} />
     {langs.map((l) => altPaths[l] && <link rel="alternate" hreflang={l} href={new URL(altPaths[l]!, Astro.site)} />)}
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <meta name="theme-color" content="#0a0913" />
-    <meta property="og:site_name" content="Aervorn" />
+    <meta name="theme-color" content="#07060e" />
+    <meta property="og:site_name" content="HomeLab-901" />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
     <meta property="og:url" content={canonical} />
@@ -46,7 +46,7 @@ const rss = lang === 'fr' ? '/fr/rss.xml' : '/rss.xml';
     <meta property="og:image:height" content="630" />
     <meta property="og:locale" content={lang === 'fr' ? 'fr_FR' : 'en_GB'} />
     <meta name="twitter:card" content="summary_large_image" />
-    <link rel="alternate" type="application/rss+xml" title="Aervorn" href={rss} />
+    <link rel="alternate" type="application/rss+xml" title="HomeLab-901" href={rss} />
     <link rel="sitemap" href="/sitemap.xml" />
     <meta name="generator" content={Astro.generator} />
     <Font cssVariable="--font-display" preload />

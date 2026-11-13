@@ -2,7 +2,7 @@
 import { defineConfig, fontProviders } from 'astro/config';
 
 export default defineConfig({
-  site: 'https://aervorn.github.io',
+  site: 'https://www.homelab-901.fr',
 
   // English at /, French at /fr/
   i18n: {

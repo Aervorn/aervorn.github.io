@@ -28,6 +28,8 @@ export interface App {
   /** Where it runs: a Mac app (DMG download) or a self-hosted tool (Docker) */
   platform: 'mac' | 'server';
   version: string;
+  /** When the current version came out, e.g. '2026-11-13T12:41+01:00'. Feeds the journal on the home page. */
+  released?: string;
   tagline: T;
   description: T;
   icon: string;

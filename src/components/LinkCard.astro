@@ -1,0 +1,133 @@
+---
+// One tool of the Links page: a summary row that opens (native <details>) on a short
+// summary and screenshots.
+import { Image } from 'astro:assets';
+import { render, type CollectionEntry } from 'astro:content';
+import { linkCategories, linkTags } from '../data/links';
+import type { Lang } from '../i18n/config';
+import { useT } from '../i18n/ui';
+import '../styles/prose.css';
+
+interface Props { link: CollectionEntry<'links'>; lang: Lang; open?: boolean }
+const { link, lang, open = false } = Astro.props;
+const t = useT(lang);
+const d = link.data;
+const cat = linkCategories[d.category];
+const mono = d.monogram ?? d.name.replace(/[^A-Za-z0-9 ]/g, '').split(/\s+/).map((w) => w[0]).join('').slice(0, 2);
+const { Content } = await render(link);
+const id = link.id.split('/').slice(1).join('/');
+---
+<details class="card" id={id} open={open} data-cat={d.category} data-tags={d.tags.join(' ')} style={`--c: ${cat.color}`}>
+  <summary>
+    <span class="icon">
+      {d.logo ? <Image src={d.logo} alt="" width={64} height={64} /> : <span class="mono" aria-hidden="true">{mono}</span>}
+    </span>
+    <span class="main">
+      <span class="line">
+        <span class="name">{d.name}</span>
+        <span class="cat">{cat.label[lang]}</span>
+        {d.platforms && <span class="platforms">{d.platforms}</span>}
+      </span>
+      <span class="desc">{d.description}</span>
+      {d.tags.length > 0 && (
+        <span class="tags">
+          {d.tags.map((tag) => <span class="tag" style={`--t: ${linkTags[tag].color}`}>{linkTags[tag].label[lang]}</span>)}
+        </span>
+      )}
+    </span>
+    <span class="toggle" aria-hidden="true"><span class="when-closed">{t('links.expand')}</span><span class="when-open">{t('links.collapse')}</span></span>
+  </summary>
+
+  <div class="body">
+    <div class="prose summary"><Content /></div>
+
+    {d.screenshots.length > 0 && (
+      <div>
+        <h3 class="label">{t('links.shots')}</h3>
+        <div class="shots">
+          {d.screenshots.map((s) => (
+            <a href={s.src.src}><Image src={s.src} alt={s.alt} widths={[400, 800]} sizes="(max-width: 860px) 100vw, 420px" /></a>
+          ))}
+        </div>
+      </div>
+    )}
+
+    <div class="foot">
+      <span class="buttons">
+        <a class="btn btn-primary" href={d.site}>{t('links.site')}</a>
+        {d.repo && <a class="btn btn-ghost repo" href={d.repo}>{t('links.repo')}</a>}
+      </span>
+    </div>
+  </div>
+</details>
+
+<style>
+  .card {
+    background: linear-gradient(180deg, #16152a, #11101c);
+    border: 1px solid rgba(196, 190, 255, 0.12);
+    border-radius: 18px;
+    overflow: hidden;
+    transition: border-color 0.2s;
+  }
+  .card[open] { border-color: color-mix(in srgb, var(--teal) 40%, transparent); }
+  .card[hidden] { display: none; }
+  summary {
+    list-style: none;
+    cursor: pointer;
+    padding: 24px 28px;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 18px 28px;
+  }
+  summary::-webkit-details-marker { display: none; }
+  .icon {
+    flex: 0 0 64px;
+    width: 64px;
+    height: 64px;
+    border-radius: 16px;
+    background: var(--ink);
+    border: 1px solid rgba(196, 190, 255, 0.16);
+    display: grid;
+    place-items: center;
+    overflow: hidden;
+  }
+  .icon :global(img) { width: 100%; height: 100%; object-fit: contain; padding: 10px; }
+  .mono { font-family: var(--display); font-weight: 800; font-size: 22px; color: var(--c); }
+  .main { flex: 1 1 420px; min-width: 0; display: flex; flex-direction: column; gap: 8px; }
+  .line { display: flex; flex-wrap: wrap; align-items: baseline; gap: 4px 14px; }
+  .name { font-family: var(--display); font-weight: 700; font-size: clamp(24px, 2.6vw, 30px); letter-spacing: -0.03em; line-height: 1.1; }
+  .cat { font-family: var(--mono); font-size: 12.5px; color: var(--c); }
+  .platforms { font-family: var(--mono); font-size: 12.5px; color: var(--muted); }
+  .desc { color: #c9c5e0; }
+  .tags { display: flex; flex-wrap: wrap; gap: 6px; }
+  .tag {
+    font-size: 12.5px;
+    font-weight: 500;
+    padding: 3px 10px;
+    border-radius: 999px;
+    color: var(--t);
+    background: color-mix(in srgb, var(--t) 12%, transparent);
+    border: 1px solid color-mix(in srgb, var(--t) 35%, transparent);
+  }
+  .toggle {
+    font-family: var(--mono);
+    font-size: 13px;
+    padding: 11px 16px;
+    border-radius: 10px;
+    border: 1px solid rgba(196, 190, 255, 0.2);
+  }
+  summary:hover .toggle { border-color: var(--teal); color: var(--teal); }
+  .when-open { display: none; }
+  .card[open] .when-open { display: inline; }
+  .card[open] .when-closed { display: none; }
+
+  .body { border-top: 1px solid var(--line); padding: 28px; display: grid; gap: 28px; }
+  .summary { margin: 0; font-size: 18px; max-width: 68ch; }
+  .label { font-family: var(--mono); font-size: 12px; font-weight: 400; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); margin: 0; }
+  .shots { margin-top: 10px; display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 14px; }
+  .shots :global(img) { width: 100%; height: auto; border-radius: 12px; border: 1px solid var(--line); display: block; }
+  .foot { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 14px; }
+  .buttons { display: flex; flex-wrap: wrap; gap: 8px; margin-left: auto; }
+  .repo { font-family: var(--mono); font-weight: 400; font-size: 13px; }
+</style>

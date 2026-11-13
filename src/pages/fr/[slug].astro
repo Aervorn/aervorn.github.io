@@ -1,12 +1,10 @@
 ---
-// One page per app, generated from src/data/apps.ts
-import AppView from '../../views/AppView.astro';
+// Old app addresses (/navloom) now live under /apps: send visitors there.
 import { apps } from '../../data/apps';
-import type { App } from '../../data/types';
+import { localePath } from '../../i18n/config';
 
 export function getStaticPaths() {
-  return apps.map((app) => ({ params: { slug: app.slug }, props: { app } }));
+  return apps.map((app) => ({ params: { slug: app.slug } }));
 }
-interface Props { app: App }
+return Astro.redirect(localePath('fr', `/apps/${Astro.params.slug}`), 301);
 ---
-<AppView app={Astro.props.app} lang="fr" />
