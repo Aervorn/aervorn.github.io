@@ -19,7 +19,8 @@ export const navloom: App = {
   slug: 'navloom',
   name: 'Navloom',
   platform: 'mac',
-  version: '0.1.1',
+  version: '0.2.0',
+  selfUpdating: true,
   tagline: {
     en: 'Keep your browser bookmarks and tabs in shape.',
     fr: 'Gardez vos favoris et vos onglets en ordre.',
@@ -43,15 +44,15 @@ export const navloom: App = {
   minMacOS: 'macOS 14.6',
   repo: 'https://github.com/Aervorn/MacOS_Navloom',
   facts: [
-    { label: { en: 'Version', fr: 'Version' }, value: '0.1.1' },
+    { label: { en: 'Version', fr: 'Version' }, value: '0.2.0' },
     { label: { en: 'Requires', fr: 'Requiert' }, value: 'macOS 14.6' },
     { label: { en: 'Tools', fr: 'Outils' }, value: '5' },
     { label: { en: 'Languages', fr: 'Langues' }, value: 'EN · FR' },
     { label: { en: 'License', fr: 'Licence' }, value: 'MIT' },
   ],
   privacy: {
-    en: 'Navloom collects nothing and sends nothing about you. The only network requests are those of FaviconSync and Ghosts, sent straight to the websites of your own bookmarks.',
-    fr: 'Navloom ne collecte rien et n’envoie rien vous concernant. Les seules requêtes réseau sont celles de FaviconSync et Ghosts, envoyées directement aux sites de vos propres favoris.',
+    en: 'Navloom collects nothing and sends nothing about you. The only network requests are those of FaviconSync and Ghosts, sent straight to the websites of your own bookmarks, and the daily update check, which only downloads the list of versions from GitHub.',
+    fr: 'Navloom ne collecte rien et n’envoie rien vous concernant. Les seules requêtes réseau sont celles de FaviconSync et Ghosts, envoyées directement aux sites de vos propres favoris, et la recherche quotidienne de mises à jour, qui télécharge seulement la liste des versions depuis GitHub.',
   },
   sections: [
     {
