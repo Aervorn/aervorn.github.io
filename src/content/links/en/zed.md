@@ -15,7 +15,7 @@ screenshots:
   - src: ../../../assets/links/mole-3.png
     alt: Disk analyze provide a very clear and interactive overview of used disk space
 order: 50
-draft: false
+draft: true
 ---
 
 Zed is made by the team behind Atom and Tree-sitter. The editor is open source (GPL-3.0) and free; only access to the AI models Zed hosts is paid, and you can plug in your own keys or external agents instead.
