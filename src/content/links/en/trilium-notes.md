@@ -7,11 +7,15 @@ platforms: "macOS · Windows · Linux · Docker server"
 site: https://triliumnotes.org
 repo: https://github.com/TriliumNext/Trilium
 logo: ../../../assets/links/trilium-notes.png
-# screenshots:
-#   - src: ../../../assets/links/<fichier>.png
-#     alt: <description>
+screenshots:
+  - src: ../../../assets/links/trilium-notes-1.png
+    alt: Main view, desktop app, in dark mode
+  - src: ../../../assets/links/trilium-notes-2.png
+    alt: Canvas, web interface, with an alternate dark mode
+  - src: ../../../assets/links/trilium-notes-3.png
+    alt: Relation map, desktop app, in white mode
 order: 40
-draft: true
+draft: false
 ---
 
 Trilium works as a desktop app, or with a self-hosted server that syncs your notes between machines and serves them in a browser. Beyond text, it handles code, mind maps, canvases, geographic maps and tables, and can publish selected notes read-only on the web.
