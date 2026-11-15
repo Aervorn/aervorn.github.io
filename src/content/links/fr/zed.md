@@ -7,9 +7,13 @@ platforms: "macOS · Linux · Windows"
 site: https://zed.dev
 repo: https://github.com/zed-industries/zed
 logo: ../../../assets/links/zed.png
-# screenshots:
-#   - src: ../../../assets/links/<fichier>.png
-#     alt: <description>
+screenshots:
+  - src: ../../../assets/links/mole-1.png
+    alt: Menu principal (commande mo ou mole) avec les options les plus utiles
+  - src: ../../../assets/links/mole-2.png
+    alt: La ligne de commande propose beaucoup plus d’options
+  - src: ../../../assets/links/mole-3.png
+    alt: L’analyse disque offre un aperçu très clair et interactif de l’espace disque utilisé
 order: 50
 draft: true
 ---
