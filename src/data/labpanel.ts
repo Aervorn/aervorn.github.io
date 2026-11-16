@@ -15,8 +15,8 @@ export const labpanel: App = {
   slug: 'labpanel',
   name: 'LabPanel',
   platform: 'mac',
-  version: '0.2.2',
-  released: '2026-11-13T09:33+01:00',
+  version: '0.2.3',
+  released: '2026-11-16T13:35+01:00',
   selfUpdating: true,
   tagline: {
     en: 'Your homelab’s web interfaces in one Mac window.',
@@ -32,9 +32,9 @@ export const labpanel: App = {
     en: 'LabPanel with the capsule tab bar and a service open',
     fr: 'LabPanel avec la capsule d’onglets et un service ouvert',
   },
-  accent: ['#22d3ee', '#7c3aed'],
+  accent: ['#5aa9e6', '#2f5e8c'],
   features: [
-    { label: { en: 'Capsule or dock tabs', fr: 'Onglets capsule ou dock' }, color: '#22d3ee' },
+    { label: { en: 'Capsule or dock tabs', fr: 'Onglets capsule ou dock' }, color: '#5aa9e6' },
     { label: { en: 'Quick switcher ⌘K', fr: 'Sélecteur rapide ⌘K' }, color: '#a855f7' },
     { label: { en: 'Automatic sign-in', fr: 'Connexion automatique' }, color: '#f59e0b' },
     { label: { en: 'Service status', fr: 'État des services' }, color: '#2dd4bf' },
@@ -43,7 +43,7 @@ export const labpanel: App = {
   minMacOS: 'macOS 26',
   repo: 'https://github.com/Aervorn/MacOS_LabPanel',
   facts: [
-    { label: { en: 'Version', fr: 'Version' }, value: '0.2.2' },
+    { label: { en: 'Version', fr: 'Version' }, value: '0.2.3' },
     { label: { en: 'Requires', fr: 'Requiert' }, value: 'macOS 26' },
     { label: { en: 'Interface', fr: 'Interface' }, value: 'EN · FR' },
     { label: { en: 'Engine', fr: 'Moteur' }, value: 'WebKit' },
@@ -166,11 +166,13 @@ export const labpanel: App = {
         en: [
           'Handles Proxmox, DSM’s two-step login and Home Assistant’s Shadow DOM forms.',
           'Logins are only given to pages on the service’s own host; after a failure, nothing is submitted again for two minutes.',
+          'Only real sign-in forms are filled: settings forms and search fields are left alone, and filling stops once you’re signed in.',
           'Self-signed certificates (Proxmox, DSM, UniFi) are accepted for that service’s host only.',
         ],
         fr: [
           'Gère Proxmox, la connexion en deux étapes de DSM et les formulaires en Shadow DOM de Home Assistant.',
           'Les identifiants ne sont donnés qu’aux pages du service lui-même ; après un échec, rien n’est renvoyé pendant deux minutes.',
+          'Seuls les vrais formulaires de connexion sont remplis : les formulaires de réglages et les champs de recherche ne sont pas touchés, et le remplissage s’arrête une fois connecté.',
           'Les certificats auto-signés (Proxmox, DSM, UniFi) sont acceptés pour l’hôte du service uniquement.',
         ],
       },
