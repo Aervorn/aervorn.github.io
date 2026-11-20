@@ -18,8 +18,8 @@ export const octopus: App = {
   slug: 'octopus',
   name: 'Octopus',
   platform: 'mac',
-  version: '0.3.0',
-  released: '2026-11-20T20:27+01:00',
+  version: '0.3.1',
+  released: '2026-11-20T21:26+01:00',
   selfUpdating: true,
   tagline: {
     en: 'Cleanup, apps, security and system tools for your Mac.',
@@ -46,7 +46,7 @@ export const octopus: App = {
   minMacOS: 'macOS 14',
   repo: 'https://github.com/Aervorn/MacOS_Octopus',
   facts: [
-    { label: { en: 'Version', fr: 'Version' }, value: '0.3.0' },
+    { label: { en: 'Version', fr: 'Version' }, value: '0.3.1' },
     { label: { en: 'Requires', fr: 'Requiert' }, value: 'macOS 14' },
     { label: { en: 'Interface', fr: 'Interface' }, value: 'EN · FR' },
     { label: { en: 'Engine', fr: 'Moteur' }, value: 'Mole' },
