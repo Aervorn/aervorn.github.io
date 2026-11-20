@@ -18,8 +18,8 @@ export const octopus: App = {
   slug: 'octopus',
   name: 'Octopus',
   platform: 'mac',
-  version: '0.2.0',
-  released: '2026-11-13T10:07+01:00',
+  version: '0.3.0',
+  released: '2026-11-20T20:27+01:00',
   selfUpdating: true,
   tagline: {
     en: 'Cleanup, apps, security and system tools for your Mac.',
@@ -46,7 +46,7 @@ export const octopus: App = {
   minMacOS: 'macOS 14',
   repo: 'https://github.com/Aervorn/MacOS_Octopus',
   facts: [
-    { label: { en: 'Version', fr: 'Version' }, value: '0.2.0' },
+    { label: { en: 'Version', fr: 'Version' }, value: '0.3.0' },
     { label: { en: 'Requires', fr: 'Requiert' }, value: 'macOS 14' },
     { label: { en: 'Interface', fr: 'Interface' }, value: 'EN · FR' },
     { label: { en: 'Engine', fr: 'Moteur' }, value: 'Mole' },
@@ -126,13 +126,13 @@ export const octopus: App = {
       points: {
         en: [
           'Startup items with their signature: enable, disable or reveal them, several at a time.',
-          'Homebrew: one-click upgrades, packages excluded from updates, formulae and casks, services, cleanup and autoremove.',
-          'Detects and repairs a cask stuck on “already an App at…”.',
+          'Homebrew: one-click upgrades, formulae and casks, services, cleanup and autoremove; apps that update themselves are flagged and left out of “Update all”.',
+          'A Consistency tab finds apps updated outside Homebrew, apps installed by hand that a cask could manage, and duplicate apps.',
         ],
         fr: [
           'Éléments de démarrage avec leur signature : activez, désactivez ou affichez-les, plusieurs à la fois.',
-          'Homebrew : mises à jour en un clic, paquets exclus des mises à jour, formules et casks, services, nettoyage et autoremove.',
-          'Détecte et répare un cask bloqué sur « already an App at… ».',
+          'Homebrew : mises à jour en un clic, formules et casks, services, nettoyage et autoremove ; les apps qui se mettent à jour seules sont signalées et laissées de côté par « Tout mettre à jour ».',
+          'Un onglet Cohérence repère les apps mises à jour sans Homebrew, les apps installées à la main qu’un cask pourrait gérer, et les apps en double.',
         ],
       },
     },
