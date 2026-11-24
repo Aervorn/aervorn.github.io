@@ -8,10 +8,10 @@ import grid from '../assets/apps/flux-grid.jpg';
 import gridFr from '../assets/apps/flux-grid-fr.jpg';
 import similar from '../assets/apps/flux-similar.jpg';
 import similarFr from '../assets/apps/flux-similar-fr.jpg';
-import settings from '../assets/apps/flux-settings.jpg';
-import settingsFr from '../assets/apps/flux-settings-fr.jpg';
 import filters from '../assets/apps/flux-filters.jpg';
 import filtersFr from '../assets/apps/flux-filters-fr.jpg';
+import sync from '../assets/apps/flux-sync.jpg';
+import syncFr from '../assets/apps/flux-sync-fr.jpg';
 import stats from '../assets/apps/flux-stats.jpg';
 import statsFr from '../assets/apps/flux-stats-fr.jpg';
 
@@ -193,8 +193,6 @@ export const flux: App = {
       heading: { en: 'Favorites, tags and history', fr: 'Favoris, tags et historique' },
       glyph: 'tag',
       color: '#0ea5e9',
-      screenshot: { en: settings, fr: settingsFr },
-      screenshotAlt: { en: 'Reading settings in Flux', fr: 'Réglages de lecture de Flux' },
       summary: {
         en: 'Keep what matters: favorites are never deleted, tags sort them, and the history brings back what you opened.',
         fr: 'Gardez l’essentiel : les favoris ne sont jamais supprimés, les tags les rangent, et l’historique retrouve ce que vous avez ouvert.',
@@ -265,6 +263,8 @@ export const flux: App = {
       heading: { en: 'Sync and backup with iCloud Drive', fr: 'Synchro et sauvegarde avec iCloud Drive' },
       glyph: 'sync',
       color: '#3b82f6',
+      screenshot: { en: sync, fr: syncFr },
+      screenshotAlt: { en: 'Sync settings in Flux', fr: 'Réglages de synchro de Flux' },
       summary: {
         en: 'Turn on sync on each Mac to keep feeds, folders, names, filter rules, read articles, favorites and tags in sync through your own iCloud Drive.',
         fr: 'Activez la synchro sur chaque Mac pour garder flux, dossiers, noms, règles de filtrage, articles lus, favoris et tags synchronisés via votre propre iCloud Drive.',
