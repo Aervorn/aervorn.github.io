@@ -19,8 +19,8 @@ export const flux: App = {
   slug: 'flux',
   name: 'Flux',
   platform: 'mac',
-  version: '0.8.0',
-  released: '2026-11-24T21:49+01:00',
+  version: '0.8.1',
+  released: '2026-11-24T22:54+01:00',
   selfUpdating: false,
   tagline: { en: 'A simple, good-looking RSS reader.', fr: 'Un lecteur RSS simple et joli.' },
   description: {
@@ -72,16 +72,18 @@ export const flux: App = {
       },
       points: {
         en: [
-          'Folders with their own unread count, and each site’s favicon next to its feed.',
+          'Folders with their own unread count, their own icon and color, and each site’s favicon next to its feed. Drag a feed onto a folder.',
           'Rename a feed when its name is too long; the original is kept.',
-          'Change a feed’s address without losing its articles.',
+          'A warning badge flags a feed that couldn’t be refreshed; hover it for the reason.',
+          'Change a feed’s address without losing its articles, on all your Macs.',
           'OPML import and export, to come from NetNewsWire, Reeder or Feedly.',
           'Resizable panels; the window remembers its size and position.',
         ],
         fr: [
-          'Des dossiers avec leur nombre de non-lus, et le favicon de chaque site à côté de son flux.',
+          'Des dossiers avec leur nombre de non-lus, leur icône et leur couleur, et le favicon de chaque site à côté de son flux. Glissez un flux sur un dossier.',
           'Renommez un flux au nom trop long ; le nom d’origine est conservé.',
-          'Changez l’adresse d’un flux sans perdre ses articles.',
+          'Une pastille d’avertissement signale un flux qui n’a pas pu être actualisé ; survolez-la pour connaître la raison.',
+          'Changez l’adresse d’un flux sans perdre ses articles, sur tous vos Mac.',
           'Import et export OPML, pour venir de NetNewsWire, Reeder ou Feedly.',
           'Panneaux redimensionnables ; la fenêtre retient sa taille et sa position.',
         ],
@@ -132,17 +134,17 @@ export const flux: App = {
         en: [
           'Clean layout, light or dark, adjustable text size and width.',
           'One button switches between the feed version and the full article.',
-          'Print an article or export it as PDF from the toolbar.',
+          'Print an article or save it straight to a PDF file from the toolbar.',
         ],
         fr: [
           'Mise en page soignée, claire ou sombre, taille et largeur du texte réglables.',
           'Un bouton bascule entre la version du flux et l’article complet.',
-          'Imprimez un article ou exportez-le en PDF depuis la barre d’outils.',
+          'Imprimez un article ou enregistrez-le directement en PDF depuis la barre d’outils.',
         ],
       },
       limits: {
-        en: ['Articles reserved for subscribers stay cut, since the site doesn’t serve the rest.', 'Embedded videos are removed from the article; only their link remains.'],
-        fr: ['Les articles réservés aux abonnés restent coupés, puisque le site ne fournit pas la suite.', 'Les vidéos intégrées sont retirées de l’article ; seul leur lien reste.'],
+        en: ['Articles reserved for subscribers stay cut, since the site doesn’t serve the rest.', 'YouTube, Vimeo and Dailymotion videos only load when you click them; other players are removed, only their link remains.'],
+        fr: ['Les articles réservés aux abonnés restent coupés, puisque le site ne fournit pas la suite.', 'Les vidéos YouTube, Vimeo et Dailymotion ne se chargent qu’au clic ; les autres lecteurs sont retirés, seul leur lien reste.'],
       },
     },
     {
