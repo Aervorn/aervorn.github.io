@@ -19,8 +19,8 @@ export const flux: App = {
   slug: 'flux',
   name: 'Flux',
   platform: 'mac',
-  version: '0.8.1',
-  released: '2026-11-24T22:54+01:00',
+  version: '0.8.5',
+  released: '2026-11-25T14:38+01:00',
   selfUpdating: false,
   tagline: { en: 'A simple, good-looking RSS reader.', fr: 'Un lecteur RSS simple et joli.' },
   description: {
@@ -47,7 +47,7 @@ export const flux: App = {
   minMacOS: 'macOS 14',
   repo: 'https://github.com/Aervorn/MacOS_Flux',
   facts: [
-    { label: { en: 'Version', fr: 'Version' }, value: '0.8.0' },
+    { label: { en: 'Version', fr: 'Version' }, value: '0.8.5' },
     { label: { en: 'Requires', fr: 'Requiert' }, value: 'macOS 14' },
     { label: { en: 'Formats', fr: 'Formats' }, value: 'RSS · Atom · JSON' },
     { label: { en: 'Languages', fr: 'Langues' }, value: 'EN · FR' },
@@ -104,14 +104,14 @@ export const flux: App = {
       points: {
         en: [
           'Thumbnails from the feed, the article’s first image or the page preview.',
-          'Search in the title and text of the current view.',
+          'Search the current view in the title, the text or both, and choose 0 to 4 summary lines in the list.',
           'Light and dark themes, and a choice of fonts for the interface and the articles.',
           'Hide read articles with one button in the toolbar.',
           'Select several articles with ⌘-click or ⇧-click and act on them at once.',
         ],
         fr: [
           'Vignettes tirées du flux, de la première image de l’article ou de l’aperçu de la page.',
-          'Recherche dans le titre et le texte de la vue en cours.',
+          'Recherche dans le titre, le texte ou les deux pour la vue en cours, et de 0 à 4 lignes de résumé dans la liste.',
           'Thèmes clair et sombre, et un choix de polices pour l’interface et les articles.',
           'Masquez les articles lus d’un clic dans la barre d’outils.',
           'Sélectionnez plusieurs articles avec ⌘-clic ou ⇧-clic et agissez sur eux d’un coup.',
@@ -180,12 +180,12 @@ export const flux: App = {
       screenshot: { en: filters, fr: filtersFr },
       screenshotAlt: { en: 'Filter rules in Flux settings', fr: 'Règles de filtrage dans les réglages de Flux' },
       summary: {
-        en: 'Rules hide articles, or mark them as read, by a keyword in their title. Case and accents are ignored.',
-        fr: 'Des règles masquent les articles, ou les marquent comme lus, selon un mot-clé dans leur titre. La casse et les accents sont ignorés.',
+        en: 'Rules hide articles, or mark them as read, by a keyword in their title; smart folders gather them by keywords. Case and accents are ignored.',
+        fr: 'Des règles masquent les articles, ou les marquent comme lus, selon un mot-clé dans leur titre ; les dossiers intelligents les regroupent par mots-clés. La casse et les accents sont ignorés.',
       },
       points: {
-        en: ['For all feeds or only the ones you check, with a preview of how many articles a rule affects.', 'Favorites are never filtered.'],
-        fr: ['Pour tous les flux ou seulement ceux que vous cochez, avec un aperçu du nombre d’articles concernés.', 'Les favoris ne sont jamais filtrés.'],
+        en: ['For all feeds or only the ones you check, with a preview of how many articles a rule affects.', 'Favorites are never filtered.', 'Smart folders gather articles by keywords: they leave their feed but stay in All and Unread.'],
+        fr: ['Pour tous les flux ou seulement ceux que vous cochez, avec un aperçu du nombre d’articles concernés.', 'Les favoris ne sont jamais filtrés.', 'Les dossiers intelligents regroupent les articles par mots-clés : ils quittent leur flux mais restent dans Tous et Non lus.'],
       },
       limits: { en: ['Only the title is checked, not the article text.'], fr: ['Seul le titre est vérifié, pas le texte de l’article.'] },
     },
@@ -268,8 +268,8 @@ export const flux: App = {
       screenshot: { en: sync, fr: syncFr },
       screenshotAlt: { en: 'Sync settings in Flux', fr: 'Réglages de synchro de Flux' },
       summary: {
-        en: 'Turn on sync on each Mac to keep feeds, folders, names, filter rules, read articles, favorites and tags in sync through your own iCloud Drive.',
-        fr: 'Activez la synchro sur chaque Mac pour garder flux, dossiers, noms, règles de filtrage, articles lus, favoris et tags synchronisés via votre propre iCloud Drive.',
+        en: 'Turn on sync on each Mac to keep feeds, folders, names, filter rules, smart folders, read articles, favorites and tags in sync through your own iCloud Drive.',
+        fr: 'Activez la synchro sur chaque Mac pour garder flux, dossiers, noms, règles de filtrage, dossiers intelligents, articles lus, favoris et tags synchronisés via votre propre iCloud Drive.',
       },
       points: {
         en: [
@@ -284,8 +284,8 @@ export const flux: App = {
         ],
       },
       limits: {
-        en: ['iCloud Drive must be turned on; changes usually arrive within a minute.', 'Backups from the former Swift version can’t be restored; import its data instead.'],
-        fr: ['iCloud Drive doit être activé ; les changements arrivent en général en moins d’une minute.', 'Les sauvegardes de l’ancienne version Swift ne se restaurent pas ; importez plutôt ses données.'],
+        en: ['iCloud Drive must be turned on; changes usually arrive within a minute.', 'Backups from the former Swift version can’t be restored; import its data instead.', 'Since 0.8.5 the sync format changed: update Flux on all your Macs.'],
+        fr: ['iCloud Drive doit être activé ; les changements arrivent en général en moins d’une minute.', 'Les sauvegardes de l’ancienne version Swift ne se restaurent pas ; importez plutôt ses données.', 'Depuis la 0.8.5, le format de synchro a changé : mettez Flux à jour sur tous vos Mac.'],
       },
     },
     {
