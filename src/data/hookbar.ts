@@ -9,8 +9,8 @@ export const hookbar: App = {
   slug: 'hookbar',
   name: 'HookBar',
   platform: 'mac',
-  version: '0.1.0',
-  released: '2026-11-18T22:30+01:00',
+  version: '0.2.0',
+  released: '2026-11-27T11:20+01:00',
   selfUpdating: true,
   tagline: {
     en: 'Your Discord notifications in the Mac menu bar.',
@@ -37,7 +37,7 @@ export const hookbar: App = {
   minMacOS: 'macOS 26',
   repo: 'https://github.com/Aervorn/MacOS_HookBar',
   facts: [
-    { label: { en: 'Version', fr: 'Version' }, value: '0.1.0' },
+    { label: { en: 'Version', fr: 'Version' }, value: '0.2.0' },
     { label: { en: 'Requires', fr: 'Requiert' }, value: 'macOS 26' },
     { label: { en: 'Interface', fr: 'Interface' }, value: 'EN · FR' },
     { label: { en: 'Source', fr: 'Source' }, value: 'Discord bot' },
@@ -66,12 +66,14 @@ export const hookbar: App = {
       },
       points: {
         en: [
+          'The unread count stands out in color in the menu bar: pick yours, or turn it off.',
           'A channel without unread messages disappears from the list.',
           'Embeds as Discord shows them: color bar, title, fields, image, footer.',
           'Click a message to expand it, with its links and an Open in Discord link.',
           'No Dock icon: HookBar only lives in the menu bar.',
         ],
         fr: [
+          'Le nombre de non-lus ressort en couleur dans la barre de menus : choisissez la vôtre, ou désactivez-la.',
           'Un salon sans message non lu disparaît de la liste.',
           'Les embeds comme dans Discord : barre de couleur, titre, champs, image, pied.',
           'Un clic sur un message le déplie, avec ses liens et un lien Ouvrir dans Discord.',
@@ -130,8 +132,8 @@ export const hookbar: App = {
       glyph: 'sync',
       color: '#f59e0b',
       summary: {
-        en: 'A real-time connection to Discord, with automatic reconnection after a network loss or when the Mac wakes up. Messages posted in the meantime are fetched as soon as it’s back.',
-        fr: 'Une connexion en temps réel à Discord, avec reconnexion automatique après une coupure réseau ou au réveil du Mac. Les messages postés entre-temps sont récupérés dès son retour.',
+        en: 'A real-time connection to Discord, with automatic reconnection after a network loss or when the Mac wakes up. A network loss shows up right away, with a slashed bell, and messages posted in the meantime are fetched as soon as it’s back.',
+        fr: 'Une connexion en temps réel à Discord, avec reconnexion automatique après une coupure réseau ou au réveil du Mac. Une perte de réseau est signalée aussitôt par une cloche barrée, et les messages postés entre-temps sont récupérés dès son retour.',
       },
       points: {
         en: [
