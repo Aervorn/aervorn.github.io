@@ -19,13 +19,13 @@ export const flux: App = {
   slug: 'flux',
   name: 'Flux',
   platform: 'mac',
-  version: '0.8.5',
-  released: '2026-11-25T14:38+01:00',
+  version: '0.9.0',
+  released: '2026-11-27T16:19+01:00',
   selfUpdating: false,
   tagline: { en: 'A simple, good-looking RSS reader.', fr: 'Un lecteur RSS simple et joli.' },
   description: {
-    en: 'Add your feeds, browse them as a list or a grid, and read the full article right in the app. Similar stories from several sources are grouped, favorites can be tagged, everything can be prepared for offline reading, and your Macs stay in sync and backed up through iCloud Drive.',
-    fr: 'Ajoutez vos flux, parcourez-les en liste ou en grille et lisez l’article complet directement dans l’appli. Les articles similaires de plusieurs sources sont regroupés, les favoris peuvent recevoir des tags, tout peut être préparé pour la lecture hors ligne, et vos Mac restent synchronisés et sauvegardés via iCloud Drive.',
+    en: 'Add your feeds, start from a daily briefing, browse them as a list or a grid, and read the full article right in the app, with an on-device summary if you like. Get notified of what matters to you. Similar stories from several sources are grouped, favorites can be tagged, everything can be prepared for offline reading, and your Macs stay in sync and backed up through iCloud Drive.',
+    fr: 'Ajoutez vos flux, partez d’un point du jour, parcourez-les en liste ou en grille et lisez l’article complet directement dans l’appli, avec un résumé calculé sur votre Mac si vous le souhaitez. Soyez prévenu de ce qui vous intéresse. Les articles similaires de plusieurs sources sont regroupés, les favoris peuvent recevoir des tags, tout peut être préparé pour la lecture hors ligne, et vos Mac restent synchronisés et sauvegardés via iCloud Drive.',
   },
   icon,
   screenshot: { en: home, fr: homeFr },
@@ -37,7 +37,9 @@ export const flux: App = {
   features: [
     { label: { en: 'Full articles', fr: 'Articles complets' }, color: '#ff6a3d' },
     { label: { en: 'Similar stories', fr: 'Articles similaires' }, color: '#ffb054' },
-    { label: { en: 'Light & dark', fr: 'Clair et sombre' }, color: '#e8336b' },
+    { label: { en: 'Seven themes', fr: 'Sept thèmes' }, color: '#e8336b' },
+    { label: { en: 'Notifications', fr: 'Notifications' }, color: '#f97316' },
+    { label: { en: 'AI summaries', fr: 'Résumés par IA' }, color: '#8b5cf6' },
     { label: { en: 'Tags', fr: 'Tags' }, color: '#a855f7' },
     { label: { en: 'Offline reading', fr: 'Lecture hors ligne' }, color: '#0ea5e9' },
     { label: { en: 'Reading statistics', fr: 'Statistiques de lecture' }, color: '#22c55e' },
@@ -47,15 +49,15 @@ export const flux: App = {
   minMacOS: 'macOS 14',
   repo: 'https://github.com/Aervorn/MacOS_Flux',
   facts: [
-    { label: { en: 'Version', fr: 'Version' }, value: '0.8.5' },
+    { label: { en: 'Version', fr: 'Version' }, value: '0.9.0' },
     { label: { en: 'Requires', fr: 'Requiert' }, value: 'macOS 14' },
     { label: { en: 'Formats', fr: 'Formats' }, value: 'RSS · Atom · JSON' },
     { label: { en: 'Languages', fr: 'Langues' }, value: 'EN · FR' },
     { label: { en: 'License', fr: 'Licence' }, value: 'MIT' },
   ],
   privacy: {
-    en: 'Flux collects nothing and sends nothing about you. Apart from the optional sync through your own iCloud Drive and the check for a new version on GitHub, it only talks to the sites you subscribe to.',
-    fr: 'Flux ne collecte rien et n’envoie rien vous concernant. En dehors de la synchro facultative via votre propre iCloud Drive et de la recherche d’une nouvelle version sur GitHub, il ne contacte que les sites auxquels vous êtes abonné.',
+    en: 'Flux collects nothing and sends nothing about you; summaries are computed on your Mac. Apart from the optional sync through your own iCloud Drive and the check for a new version on GitHub, it only talks to the sites you subscribe to.',
+    fr: 'Flux ne collecte rien et n’envoie rien vous concernant ; les résumés sont calculés sur votre Mac. En dehors de la synchro facultative via votre propre iCloud Drive et de la recherche d’une nouvelle version sur GitHub, il ne contacte que les sites auxquels vous êtes abonné.',
   },
   sections: [
     {
@@ -90,6 +92,52 @@ export const flux: App = {
       },
     },
     {
+      id: 'home',
+      title: { en: 'Home', fr: 'Accueil' },
+      heading: { en: 'A briefing, and notifications', fr: 'Un point du jour, et des notifications' },
+      glyph: 'home',
+      color: '#f97316',
+      summary: {
+        en: 'Flux opens on a briefing: today’s figures, the stories covered by several of your sources, your smart folders and the unread articles of the last 24 hours.',
+        fr: 'Flux s’ouvre sur un point du jour : les chiffres du jour, les sujets repris par plusieurs de vos sources, vos dossiers intelligents et les non-lus des dernières 24 heures.',
+      },
+      points: {
+        en: [
+          'Notifications of new articles, from all feeds or only the folders, feeds, smart folders and keywords you choose.',
+          'Refreshing happens in the background; an option keeps Flux in the menu bar when its window is closed.',
+          'Clicking a notification opens the article.',
+        ],
+        fr: [
+          'Des notifications des nouveaux articles, de tous les flux ou seulement des dossiers, flux, dossiers intelligents et mots-clés choisis.',
+          'L’actualisation se fait en arrière-plan ; une option garde Flux dans la barre des menus quand sa fenêtre est fermée.',
+          'Un clic sur une notification ouvre l’article.',
+        ],
+      },
+      limits: {
+        en: ['No notification while Flux is in front, unless you ask for it; notification settings are specific to each Mac.'],
+        fr: ['Pas de notification quand Flux est au premier plan, sauf si vous le demandez ; les réglages de notification sont propres à chaque Mac.'],
+      },
+    },
+    {
+      id: 'ai',
+      title: { en: 'Summaries', fr: 'Résumés' },
+      heading: { en: 'Summaries with Apple Intelligence', fr: 'Résumés par Apple Intelligence' },
+      glyph: 'sparkle',
+      color: '#8b5cf6',
+      summary: {
+        en: 'One button sums an article up in a few bullet points, with Apple’s model computed on your Mac: nothing leaves it.',
+        fr: 'Un bouton résume un article en quelques points, avec le modèle d’Apple calculé sur votre Mac : rien n’en sort.',
+      },
+      points: {
+        en: ['On demand, or automatically for every article you open.', 'In the language of the interface, French or English.'],
+        fr: ['À la demande, ou automatiquement pour chaque article ouvert.', 'Dans la langue de l’interface, français ou anglais.'],
+      },
+      limits: {
+        en: ['Requires macOS 26 and an Apple silicon Mac with Apple Intelligence turned on.', 'Only the start of long articles is summarized, and a summary can contain mistakes.'],
+        fr: ['Demande macOS 26 et un Mac Apple Silicon avec Apple Intelligence activée.', 'Seul le début des longs articles est résumé, et un résumé peut contenir des erreurs.'],
+      },
+    },
+    {
       id: 'browse',
       title: { en: 'Browsing', fr: 'Navigation' },
       heading: { en: 'A list you enjoy browsing', fr: 'Une liste agréable à parcourir' },
@@ -105,14 +153,14 @@ export const flux: App = {
         en: [
           'Thumbnails from the feed, the article’s first image or the page preview.',
           'Search the current view in the title, the text or both, and choose 0 to 4 summary lines in the list.',
-          'Light and dark themes, and a choice of fonts for the interface and the articles.',
+          'Seven themes (light, sepia, dawn, dark, pure black, Nord, forest), day and night themes in automatic mode, an accent color, and a choice of fonts.',
           'Hide read articles with one button in the toolbar.',
           'Select several articles with ⌘-click or ⇧-click and act on them at once.',
         ],
         fr: [
           'Vignettes tirées du flux, de la première image de l’article ou de l’aperçu de la page.',
           'Recherche dans le titre, le texte ou les deux pour la vue en cours, et de 0 à 4 lignes de résumé dans la liste.',
-          'Thèmes clair et sombre, et un choix de polices pour l’interface et les articles.',
+          'Sept thèmes (clair, sépia, aube, sombre, noir pur, Nord, forêt), thèmes de jour et de nuit en automatique, une couleur d’accent et un choix de polices.',
           'Masquez les articles lus d’un clic dans la barre d’outils.',
           'Sélectionnez plusieurs articles avec ⌘-clic ou ⇧-clic et agissez sur eux d’un coup.',
         ],
