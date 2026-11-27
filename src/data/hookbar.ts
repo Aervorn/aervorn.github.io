@@ -9,8 +9,8 @@ export const hookbar: App = {
   slug: 'hookbar',
   name: 'HookBar',
   platform: 'mac',
-  version: '0.2.0',
-  released: '2026-11-27T11:20+01:00',
+  version: '0.2.1',
+  released: '2026-11-27T11:44+01:00',
   selfUpdating: true,
   tagline: {
     en: 'Your Discord notifications in the Mac menu bar.',
@@ -37,7 +37,7 @@ export const hookbar: App = {
   minMacOS: 'macOS 26',
   repo: 'https://github.com/Aervorn/MacOS_HookBar',
   facts: [
-    { label: { en: 'Version', fr: 'Version' }, value: '0.2.0' },
+    { label: { en: 'Version', fr: 'Version' }, value: '0.2.1' },
     { label: { en: 'Requires', fr: 'Requiert' }, value: 'macOS 26' },
     { label: { en: 'Interface', fr: 'Interface' }, value: 'EN · FR' },
     { label: { en: 'Source', fr: 'Source' }, value: 'Discord bot' },
